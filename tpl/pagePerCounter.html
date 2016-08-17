@@ -1,0 +1,7 @@
+<div class="dataTables_length" id="my_sample_1_length">
+    <label>每页显示:
+        <select ng-model="pageCount" ng-options="x.id as x.name for x in pages" ng-change="pageChanged()" name="my_sample_1_length" aria-controls="my_sample_1" class="form-control input-sm input-xsmall input-inline">
+        </select>
+    </label>
+    <span> / 总共 {{totalItems}} 条</span>                         
+</div>

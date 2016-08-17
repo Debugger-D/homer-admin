@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js" data-ng-app="MetronicApp"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js" data-ng-app="MetronicApp"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zh" data-ng-app="MetronicApp">
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+
+    <head>
+        <title data-ng-bind="'{{settings.siteTitle}} |' + $state.current.data.pageTitle"></title>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="" name="description" />
+        <meta content="" name="author" />
+        <!-- BEGIN 插件的样式 -->
+        <link href="./framework/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="./framework/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="./framework/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="./framework/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+        <link href="./framework/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+        <link href="./framework/jstree/dist/themes/default/style.min.css" rel="stylesheet" type="text/css" />
+        <link href="./framework/jquery-multi-select/css/multi-select.css" rel="stylesheet" type="text/css" />
+        <link href="./framework/icheck/all.css" rel="stylesheet" type="text/css" />
+        <link href="./framework/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+        <link href="./framework/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+       
+        <!-- END 插件的样式 -->
+        <!-- BEGIN DYMANICLY LOADED CSS FILES(all plugin and page related styles must be loaded between GLOBAL and THEME css files ) -->
+        <link id="ng_load_plugins_before" />
+        <!-- END DYMANICLY LOADED CSS FILES -->
+        <!-- BEGIN THEME STYLES -->
+        <link href="./framework/admin-theme/css/components.min.css" id="style_components" rel="stylesheet" type="text/css" />
+        <link href="./framework/admin-theme/css/plugins.min.css" rel="stylesheet" type="text/css" />
+        <link href="./framework/admin-theme/css/layout.min.css" rel="stylesheet" type="text/css" />
+        <link href="./framework/admin-theme/css/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="./css/style.css" rel="stylesheet" type="text/css" />
+        <!-- END THEME STYLES -->
+        <link rel="shortcut icon" href="favicon.ico" /> </head>
+    <!-- END HEAD -->
+
+
+    <body ng-controller="AppController" class="page-sidebar-hide page-header-fixed page-sidebar-closed-hide-logo page-on-load" ng-class="{'body-bg-white': $state.current.data.whiteBody, 'page-content-white': settings.layout.pageContentWhite,'page-container-bg-solid': settings.layout.pageBodySolid, 'page-sidebar-closed': settings.layout.pageSidebarClosed}">
+
+        <div ng-spinner-bar class="page-spinner-bar">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+
+        <div ui-view=""></div>
+
+        <script src="./framework/jquery.min.js" type="text/javascript"></script>
+        <script src="./framework/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="./framework/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+        <script src="./framework/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="./framework/jquery.blockui.min.js" type="text/javascript"></script>
+        <script src="./framework/jquery.cokie.min.js" type="text/javascript"></script>
+        <script src="./framework/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+        <script src="./framework/bootbox/bootbox.min.js" type="text/javascript"></script>
+        <script src="./framework/bootstrap-growl/jquery.bootstrap-growl.min.js" type="text/javascript"></script>
+        <script src="./framework/icheck/icheck.min.js" type="text/javascript"></script>
+        <script src="./framework/jstree/dist/jstree.min.js" type="text/javascript"></script>
+        <script src="./framework/jquery-multi-select/js/jquery.multi-select.js" type="text/javascript"></script>
+        <script src="./framework/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
+        <script src="./framework/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="./framework/bootstrap-datetimepicker/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+        <script type="text/javascript" src="./framework/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+        <!-- END CORE JQUERY PLUGINS -->
+        <!-- BEGIN CORE ANGULARJS PLUGINS -->
+        <script src="./framework/angularjs/angular.min.js" type="text/javascript"></script>
+        <script src="./framework/angularjs/angular-sanitize.min.js" type="text/javascript"></script>
+        <script src="./framework/angularjs/angular-touch.min.js" type="text/javascript"></script>
+        <script src="./framework/angularjs/angular-resource.min.js" type="text/javascript"></script>
+        <script src="./framework/angularjs/angular-cookies.min.js" type="text/javascript"></script>
+        <script src="./framework/angularjs/angular-bootstrap-switch.min.js" type="text/javascript"></script>
+        <script src="./framework/angularjs/plugins/angular-ui-router.min.js" type="text/javascript"></script>
+        <script src="./framework/angularjs/plugins/ocLazyLoad.min.js" type="text/javascript"></script>
+        <script src="./framework/angularjs/plugins/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
+        <script src="./framework/ng-pagination.min.js" type="text/javascript"></script>
+        <!-- END CORE ANGULARJS PLUGINS -->
+        <!-- BEGIN APP LEVEL ANGULARJS SCRIPTS -->
+        <script src="js/main.js" type="text/javascript"></script>
+        <script src="js/directives.js" type="text/javascript"></script>
+        <!-- Services -->
+        <script src="js/service/my_auth/MyAuthService.js" type="text/javascript"></script>
+        <script src="js/service/my_auth/MySessionService.js" type="text/javascript"></script>
+        <script src="js/service/my_auth/MyAccountAPI.js" type="text/javascript"></script>
+        <script src="js/service/ModalService.js" type="text/javascript"></script>
+        <script src="js/service/channelAPI.js" type="text/javascript"></script>
+        <script src="js/service/logsendAPI.js" type="text/javascript"></script>
+        <script src="js/service/logverifyAPI.js" type="text/javascript"></script>
+        <script src="js/service/platformAPI.js" type="text/javascript"></script>
+        <script src="js/service/templateAPI.js" type="text/javascript"></script>
+        <script src="js/service/platformchannelAPI.js" type="text/javascript"></script>
+        <script src="js/service/unlockAPI.js" type="text/javascript"></script>
+        <script src="js/service/smsAPI.js" type="text/javascript"></script>
+        <!-- Controllers 控制器 -->
+        <script src="js/controllers/login.js" type="text/javascript"></script>
+        <script src="js/controllers/channel.js" type="text/javascript"></script>
+        <script src="js/controllers/logsend.js" type="text/javascript"></script>
+        <script src="js/controllers/logverify.js" type="text/javascript"></script>
+        <script src="js/controllers/platform.js" type="text/javascript"></script>
+        <script src="js/controllers/template.js" type="text/javascript"></script>
+        <script src="js/controllers/platformchannel.js" type="text/javascript"></script>
+        <script src="js/controllers/unlock.js" type="text/javascript"></script>
+        <script src="js/controllers/sms.js" type="text/javascript"></script>
+        <script src="js/controllers/smsVerify.js" type="text/javascript"></script>
+        <!-- END APP LEVEL ANGULARJS SCRIPTS -->
+        <!-- BEGIN APP LEVEL JQUERY SCRIPTS -->
+        <script src="./framework/admin-theme/js/app.min.js" type="text/javascript"></script>
+        <script src="./framework/admin-theme/js/layout.min.js" type="text/javascript"></script>
+        <script src="./framework/admin-theme/js/quick-sidebar.min.js" type="text/javascript"></script>
+        <!-- END APP LEVEL JQUERY SCRIPTS -->
+        <!-- END JAVASCRIPTS -->
+    </body>
+    <!-- END BODY -->
+
+</html>

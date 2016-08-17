@@ -1,0 +1,45 @@
+<div class="modal-header">
+    <h3 class="caption-subject font-green bold">{{title}}业务类型</h3>
+</div>
+
+<div class="modal-body">
+    <form role="form" name="form">
+ 
+        <div class="form-group col-md-12" ng-class="{'has-success': validTpye=='ok' && form.businessType.$dirty, 'has-error' : validTpye=='err'  && form.businessType.$dirty, 'has-load': validTpye=='load' && form.alias.$dirty}">
+            <label class="control-label col-md-3">业务类型
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-7 input-icon right">
+                <i ng-show="form.businessType.$dirty" class="fa tooltips" ng-class="{'fa-warning': validTpye=='err' && form.businessType.$dirty, 'fa-check': validTpye=='ok' && form.businessType.$dirty, 'icon-ajax-load': validTpye=='load' && form.businessType.$dirty, 'icon-inputting': validTpye=='input'}" ></i>
+                <input type="text" name="businessType" ng-change="check(formData.businessType)" class="form-control" ng-model="formData.businessType"  required>
+                <span ng-show="validTpye=='err' && form.businessType.$dirty" class="help-block">该别名已经存在 !</span>
+            </div>
+        </div>
+
+
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">业务名称
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <div class="col-md-7 input-icon right">
+                    <input type="text" name="businessName" placeholder="" class="form-control" ng-model="formData.businessName" required>
+                </div>
+            </div>
+
+
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">备注</label>
+                <div class="col-md-7 input-icon right">
+                    <textarea name="remark" placeholder="" class="form-control" ng-model="formData.remark"></textarea>
+                </div>
+            </div>        
+
+            <div class="err font-red">
+                <span>{{error_description}}</span>
+            </div>
+            <div class="form-group" style="text-align: center">
+                <button type="submit" class="btn btn-success" ng-click="post(formData)" ng-disabled="form.$invalid || validTpye=='err' || validTpye=='input' || validTpye=='load'">提交</button>
+                <button class="btn" ng-click="cancel()">取消</button>
+            </div>
+    </form>
+</div>

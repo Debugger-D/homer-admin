@@ -1,0 +1,70 @@
+<!-- END PAGE SPINNER -->
+<!-- BEGIN HEADER -->
+<div data-ng-include="'./tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top"> </div>
+<!-- END HEADER -->
+<div class="clearfix"> </div>
+
+        <!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            <!-- BEGIN SIDEBAR -->
+            <div data-ng-include="'./tpl/sidebar.html'" data-ng-controller="SidebarController" class="page-sidebar-wrapper"> </div>
+            <!-- END SIDEBAR -->
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                <!-- BEGIN PAGE HEADER-->
+                    <div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li>
+                                <a href="#/main/index">首页</a>
+                                <i class="fa fa-circle"></i>
+                            </li>
+                            <li>
+                                <a href="#">{{$state.current.data.pageTitle}}</a>
+                            </li>
+                        </ul>
+                        <div class="page-toolbar pull-right">
+                            <div class="btn-group ">
+                                <button type="button" class="btn green btn-sm btn-outline dropdown-toggle" data-toggle="dropdown" dropdown-menu-hover data-delay="1000" data-close-others="true"> 欢迎你，{{currentUser}}
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu pull-right" role="menu">
+                                    <!-- <li>
+                                        <a href="#">
+                                            <i class="icon-lock"></i> 修改密码 </a>
+                                    </li>
+                                    <li class="divider"> </li> -->
+                                    <li>
+                                        <a href="javascript:;" ng-click="logout()">
+                                            <i class="icon-logout"></i> 退出
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                           <!-- <a href="#" class="page-bar-logout" ng-click="logout()">安全退出</a> -->
+                        </div>
+                    </div>
+                    <!-- BEGIN ACTUAL CONTENT -->
+                    <div ui-view="mainview" > </div>
+                    <!-- END ACTUAL CONTENT -->
+                </div>
+            </div>
+            <!-- END CONTENT -->
+            <!-- BEGIN QUICK SIDEBAR -->
+<!--             <a href="javascript:;" class="page-quick-sidebar-toggler">
+                <i class="icon-login"></i>
+            </a>
+            <div data-ng-include="'./tpl/quick-sidebar.html'" data-ng-controller="QuickSidebarController" class="page-quick-sidebar-wrapper"></div> -->
+            <!-- END QUICK SIDEBAR -->
+        </div>
+        <!-- END CONTAINER -->
+        <!-- BEGIN FOOTER -->
+        <div data-ng-include="'./tpl/footer.html'" data-ng-controller="FooterController" class="page-footer"> </div>
+        <!-- END FOOTER -->
+        <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+        <!-- BEGIN CORE JQUERY PLUGINS -->
+        <!--[if lt IE 9]>
+    <script src="../framework/admin-theme/js/respond.min.js"></script>
+    <script src="../framework/admin-theme/js/excanvas.min.js"></script>
+    <![endif]-->

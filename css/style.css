@@ -1,0 +1,273 @@
+a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, iframe, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, ul, var {
+    font-family: Microsoft Yahei,Helvetica Neue,sans-serif;
+}
+
+table thead th {
+    text-align: center;
+}
+
+table td {
+    text-align: center;
+}
+
+.logo-title {
+    position: absolute;
+    top: 12px;
+    font-size: 18px;
+    color: #FFF;
+    left: 62px;
+}
+
+.input-icon.right>i {
+    right: 18px !important;
+}
+
+.has-load {
+    color: orange;
+}
+
+.has-load .form-control {
+    border:1px solid orange;
+    -webkit-box-shadow: inset 0 1px 1px orange;
+    box-shadow: inset 0 1px 1px orange;
+}
+
+.icon-ajax-load:before {
+    content: "";
+    position: absolute;;
+    width: 16px;
+    height: 16px;
+    top:0px;
+    left: 0px;
+    z-index: 99999;
+    background-image: url('../img/input-spinner.gif');
+}
+
+.icon-inputting:before{
+    content: "";
+    position: absolute;;
+    width: 5px;
+    height: 16px;
+    top:0px;
+    left: 0px;
+    z-index: 99999;
+    background-image: url('../img/input-wait.gif');
+}
+
+.body-bg-white {
+	background-color: #fff;
+}
+
+.page-header-inner {
+	text-align: center;
+}
+
+.page-header.navbar .page-logo .logo-default {
+	height: 30px;
+	margin-top: 10px;
+}
+
+.page-header-inner .page-header-title {
+    color: #fff;
+    font-size: 21px;
+    line-height: 48px;
+}
+
+
+.page-header.navbar .menu-toggler {
+	background-image: url(../framework/img/sidebar_toggler_icon_light.png);
+}
+
+.page-bar .page-bar-logout {
+	font-size: 12px;
+	margin-left: 10px;
+	color: #5C9BD1;
+}
+
+.page-sidebar {
+	position: fixed;
+}
+
+.page-login {
+	/*margin-top: 46px;*/
+}
+
+.page-login h1 {
+    font-size: 30px;
+    font-weight: 300;
+    color: #4e5a64;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.page-login .login-form {
+    margin-top: 35%;
+    padding-left: 20%;
+}
+
+.page-login .login_banner {
+    background-position: right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.page-login .login-form input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid;
+    border-color: #a0a9b4;
+    color: #868e97;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.page-login .login-form input:focus {
+    outline: 0;
+}
+
+div[ui-view="mainview"] {
+    margin-top: 20px;
+}
+
+.jstree .no_checkbox .jstree-checkbox{
+     display:none !important;
+}
+
+.my-select-tr {
+    background-color: #96E7EF !important;
+}
+
+#my-logo {
+    padding-top: 8px;
+}
+#my-logo path:hover {
+    fill: #FFFFFF !important;
+}
+
+.my-logo-blink{
+    transition: all 0.8s;
+    -moz-transition: all 0.8s; /* Firefox 4 */
+    -webkit-transition: all 0.8s; /* Safari 和 Chrome */
+    -o-transition: all 0.8s; /* Opera */
+}
+
+@keyframes logoflash
+{
+from {}
+to {fill: #FFFFFF;}
+}
+
+@-moz-keyframes logoflash /* Firefox */
+{
+from {}
+to {fill: #FFFFFF;}
+}
+
+@-webkit-keyframes logoflash /* Safari 和 Chrome */
+{
+from {}
+to {fill: #FFFFFF;}
+}
+
+@-o-keyframes logoflash /* Opera */
+{
+from {}
+to {fill: #FFFFFF;}
+}
+
+.my-logo-flash path {
+    animation: logoflash 0.5s infinite linear;
+    animation-direction:alternate;
+    -moz-animation: logoflash 0.5s infinite linear;
+    -moz-animation-direction: alternate;
+    -webkit-animation: logoflash 0.5s infinite linear;
+    -webkit-animation-direction: alternate;
+}
+
+#sample_role_auth tr {
+    cursor: pointer;
+}
+
+#sample_role_auth tr td, #sample_role_auth tr th {
+    font-size: 17px;
+}
+
+.my-load-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #333;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    z-index: 99;
+    opacity: 0;
+    color: #FFF;
+    text-align: center;
+    padding-top: 56px;
+}
+
+#my-tree-check-load {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    display: none;
+}
+
+#my-tree-check-load > div {
+    width: 70px;
+    height: 70px;
+    background-color: #444;
+    opacity: 0.6;
+    color: #fff;
+    top: 50%;
+    position: absolute;
+    left: 27%;
+    line-height: 70px;
+    text-align: center;
+}
+
+#my-tree-check-load > div > i {
+    font-size: 24px;
+}
+
+.my-cut-content-detail{
+    position: absolute;;
+    top: 0px;
+    left: 0px;
+}
+.my-cut-content {
+    position: relative;
+}
+
+@media (min-width: 992px) {
+    .page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .page-logo {
+        padding: 0;
+        width: 224px;
+    }
+}
+
+
+@media (max-width: 1023px) {
+    .page-login {
+        margin: 0px;
+    }
+    .page-login .login_banner {
+      background-position: top;
+      min-height: 30vh;
+    }
+
+    .page-login .login-form {
+        margin-top: 15%;
+        padding-left: 20%;
+    }
+
+    .page-login h1 {
+        font-size: 25px;
+    }
+ }

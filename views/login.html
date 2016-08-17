@@ -1,0 +1,25 @@
+<div class="row page-login">
+    <div class="col-md-6 col-sm-12 login_banner" style="background-image: url({{settings.imagePath}}/login_banner.png)"></div>
+    <div class="col-md-6 col-sm-12">
+        <form class="login-form" name="form">
+            <div class="row">
+                <div class="col-xs-8">
+                    <div style="width:100%; text-align: center;"><img src="{{settings.imagePath}}/logo.png" alt="logo" class="logo-default" /></div>
+                    <h1>{{settings.siteTitle}}</h1>
+                    <div class="form-group">
+                        <input class="form-control form-control-solid placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="请输入管理员账号" name="phone" ng-model="loginData.phone" ng-init="loginData.phone = lastLoginAccount" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control form-control-solid placeholder-no-fix form-group" minlength="6" maxlength="20" placeholder="密码" ng-model="loginData.password" required>
+                    </div>
+                    <div class="alert alert-danger" ng-show="showErr">
+                        {{error_description}}
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn blue btn-block" ng-click="login(loginData)" ng-disabled="form.$invalid || isUnchanged(loginData)">登录</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

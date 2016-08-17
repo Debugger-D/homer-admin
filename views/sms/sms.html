@@ -1,0 +1,49 @@
+<div class="orgnize" ng-controller="smsController">
+<div class="modal-body">
+    <form role="form" name="form">
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-2">手机号码  
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <div class="col-md-3 input-icon right">
+                    <input type="text" name="phone" placeholder="" class="form-control" ng-model="formData.phone" required>
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-2">平台编号</label>
+                <div class="col-md-3 input-icon right">
+                <!-- <input type="text" name="platformCode" placeholder="" class="form-control" ng-model="formData.platformCode"> -->
+                    <select style="width:300px;" ng-model="formData.platformCode" ng-options="x.platformCode as (x.platformCode+$index) for x in platformC" name="platformCode" class="form-control input-small input-inline" required>
+                        <option value="">请选择平台</option>
+                    </select>
+                </div>
+            </div>   
+
+
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-2">短信模板
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <div class="col-md-3 input-icon right">
+                    <!-- <input type="text" name="type" placeholder="" class="form-control" ng-model="formData.type" required> -->
+                    <select style="width:300px;" ng-model="formData.type" ng-options="x.templateCode as (x.templateCode+$index) for x in templateC" name="type" class="form-control input-small input-inline" required>
+                        <option value="">请选择模板</option>
+                    </select>
+                </div>
+            </div>
+
+             <div class="form-group col-md-12">
+                <div class="col-md-3"></div>
+                <div class="form-group" style="text-align: left;">
+                    <div class="err font-red">
+                        <span>{{error_description}}</span>
+                    </div>
+                    <button type="submit" class="btn btn-success" ng-click="post(formData)" ng-disabled="form.$invalid">提交</button>
+                </div>
+            </div>
+
+
+    </form>
+</div>
+</div>
