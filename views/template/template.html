@@ -58,8 +58,10 @@
                                         <th class="" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="使用场景"> 使用场景</th>
                                         <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="模板内容"> 模板内容</th>
                                         <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="有效期（单位：秒）"> 有效期（单位：秒）</th>
+                                        <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="刷新验证码开关"> 刷新验证码开关</th>
                                         <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="校验重试次数"> 校验重试次数</th>
                                         <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="该条短信单日发送次数"> 该条短信单日发送次数</th>
+                                        <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="验证码长度"> 验证码长度 </th>
                                         <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="短信发送间隔时间（单位：秒）"> 短信发送间隔时间（单位：秒）</th>
                                         <th width="20%" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="操作"> 操作</th>
                                     </tr>
@@ -73,8 +75,10 @@
                                         <td>{{list.templateName}}</td>
                                         <td>{{list.templateContent}}</td>
                                         <td>{{list.validSeconds}}</td>
+                                        <td>{{list.refreshEnabled}}</td>
                                         <td>{{list.retryTimes}}</td>
                                         <td>{{list.dayTimesLimit}}</td>
+                                        <td>{{list.codeLength}}</td>   
                                         <td>{{list.intervalSeconds}}</td>
                                         <td>
                                             <a href="javascript:;" ng-click="edit(list)" class="btn blue">
