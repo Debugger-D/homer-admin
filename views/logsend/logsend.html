@@ -15,17 +15,7 @@
                                     <div  class="col-md-1 col-sm-12"></div>
                                 </div>
                                 <div class="col-md-12 col-sm-12">
-                                    <!-- <div style="padding-top: 0px; margin: 0px;" class="form-group col-md-2 input-md form-md-line-input ">    
-                                            <input type="text" class="form-control" ng-model="filterOptions.logSendId" placeholder="短信记录Id"> 
-                                            <div class="form-control-focus"> </div>
-                                        </div> -->
-                                        <!-- <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
-                                            <input type="text" class="form-control input-md" ng-model="filterOptions.platformChannelId" placeholder="平台渠道Id"> 
-                                            <div class="form-control-focus"> </div>
-                                        </div> -->
                                         <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
-                                           <!--  <input type="text" class="form-control input-md" ng-model="filterOptions.platformCode" placeholder="平台编号"> 
-                                            <div class="form-control-focus"> </div> -->
                                             <select style="width:300px;" ng-model="filterOptions.platformCode" ng-options="x.platformCode as (x.platformCode+$index) for x in platformC" name="platformCode" class="form-control input-small input-inline" required>
                                                 <option value="">请选择平台</option>
                                             </select>
@@ -34,10 +24,6 @@
                                              <input type="text" class="form-control input-md" ng-model="filterOptions.templateCode" placeholder="模板编号"> 
                                             <div class="form-control-focus"> </div>
                                         </div>
-                                     <!-- <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
-                                         <input type="text" class="form-control input-md" ng-model="filterOptions.receiverUserId" placeholder="接收者ID"> 
-                                        <div class="form-control-focus"> </div>
-                                    </div> -->
                                     <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
                                          <input type="text" class="form-control input-md" ng-model="filterOptions.phone" placeholder="手机号码"> 
                                         <div class="form-control-focus"> </div>
@@ -82,16 +68,14 @@
                                 <thead>
                                     <tr role="row">
                                         <th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="序号"> 序号 </th>
-                                        <!-- <th class="" tabindex="2" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="短信记录Id"> 短信记录Id</th> -->
-                                        <!-- <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="平台渠道Id"> 平台渠道Id</th> -->
                                         <th class="" tabindex="1" aria-controls="sample_2" rowspan="1" colspan="1" aria-label="平台编号"> 平台编号</th>
                                         <th class="" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="模板编号"> 模板编号</th>
                                         <th class="" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="动态密码"> 动态密码</th>
                                         <th class="" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="短信内容"> 短信内容</th>
-                                        <!-- <th width="20%" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="接收者ID"> 接收者ID</th> -->
                                         <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="手机号码"> 手机号码</th>
                                         <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="发送状态"> 发送状态</th>
                                         <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="发送时间"> 发送时间</th>
+                                        <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="发送人电话"> 发送人电话</th>
                                         <th width="20%" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="备注"> 备注</th>
                                     </tr>
                                 </thead>
@@ -108,6 +92,7 @@
                                         <td>{{list.phone}}</td>
                                         <td>{{list.sendStatus == 'SUCCESS' ? '成功' : '失败'}}</td>
                                         <td>{{list.sendDate | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                                        <td>{{list.senderPhone}}</td>
                                         <td>{{list.remark}}</td>
                                     </tr>       
 
@@ -115,7 +100,7 @@
                             </table>
                             
                         </div>
-                        <div style="padding: 20px 0px; text-align: center;font-size: 18px; font-weight: bold; color: #cc9f77;" ng-hide="filterOptions.platformCode">
+                        <div style="padding: 20px 0px; text-align: center;font-ssize: 18px; font-weight: bold; color: #cc9f77;" ng-hide="filterOptions.platformCode">
                                 {{platformAuthMsg ? platformAuthMsg : '请选择平台'}}
                             </div>
                             <div style="padding: 20px 0px; text-align: center;font-size: 18px; font-weight: bold; color: #cc9f77;" ng-show="platformAuthMsg">
