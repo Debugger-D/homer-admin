@@ -11,7 +11,7 @@ angular.module('MetronicApp').controller('smsController', ['$scope', '$rootScope
         $scope.templateC = data.infos;
     }, function(err) {
         toastr.error(err.data.error.description)
-    });
+    }); 
 
     $scope.post = function(formData) {
         var userInfo = MyAuthService.getUserInfo();

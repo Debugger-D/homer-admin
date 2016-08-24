@@ -411,7 +411,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
         })
         
 }]);
-
+ 
 /* Init global settings and run the app */
 MetronicApp.run(["$rootScope", "settings", "$state", "$window", "MyAuthService", "ModalService", "$location", "AUTH_EVENTS", "$cookieStore", function($rootScope, settings, $state, $window, MyAuthService, ModalService, $location, AUTH_EVENTS, $cookieStore) {
     $rootScope.$state = $state; // state to be accessed from view
