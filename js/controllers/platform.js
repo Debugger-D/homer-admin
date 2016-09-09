@@ -15,8 +15,8 @@ angular.module('MetronicApp').controller('platformController', ['$scope', '$root
         var filterObj = $.extend( {}, {pageIndex: $scope.currentPage, pageSize: $scope.pageCount}, $scope.filterOptions);
         platformAPI.get(filterObj, function(data) {
             $scope.platformAuthMsg = "";
-                    $scope.dataInfo = [];
-        $scope.totalItems = 0;
+            $scope.dataInfo = [];
+            $scope.totalItems = 0;
             if(data.infos.length < 1 || !$scope.filterOptions.platformCode) {
                 $scope.dataInfo = [];
                 $scope.totalItems = 0;
@@ -39,8 +39,8 @@ angular.module('MetronicApp').controller('platformController', ['$scope', '$root
     // 根据用户输入实时查询平台
     var timeout;
     $scope.$watch('filterOptions', function(newVal, oldVal) {
-                            $scope.platformAuthMsg = "";
-                    $scope.dataInfo = [];
+        $scope.platformAuthMsg = "";
+        $scope.dataInfo = [];
         if (newVal !== oldVal) {
             if (timeout) $timeout.cancel(timeout);
             timeout = $timeout(function() {

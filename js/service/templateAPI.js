@@ -24,6 +24,11 @@ angular.module('MetronicApp').factory('templateAPI', ["$resource", function ($re
         delet: {
             method: 'DELETE',
             headers: {"Content-Type": "application/x-www-form-urlencoded"}
+        },
+        isrefresh: {
+            method: 'PUT',
+            url: trcsmsadminTemplateUrl+'/isrefresh/:templateId',
+            headers: {"Content-Type": "application/x-www-form-urlencoded"}
         }
     })
 }]);

@@ -52,7 +52,6 @@
                                 <thead>
                                     <tr role="row">
                                         <th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="序号"> 序号 </th>
-                                        <!-- <th class="" tabindex="2" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="模板Id">   模板Id</th> -->
                                         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="短信平台编号"> 短信平台编号</th>
                                         <th class="" tabindex="1" aria-controls="sample_2" rowspan="1" colspan="1" aria-label="短信模板编号"> 短信模板编号</th>
                                         <th class="" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="使用场景"> 使用场景</th>
@@ -69,13 +68,14 @@
                                 <tbody>
                                     <tr class="gradeX" role="row" ng-repeat="list in dataInfo">
                                         <td>{{$index}}</td>
-                                        <!-- <td>{{list.templateId}}</td> -->
                                         <td>{{list.platformCode}}</td>
                                         <td>{{list.templateCode}}</td>
                                         <td>{{list.templateName}}</td>
                                         <td>{{list.templateContent}}</td>
                                         <td>{{list.validSeconds}}</td>
-                                        <td>{{list.refreshEnabled}}</td>
+                                        <td>
+                                            <input bs-switch switch-on-color="{{ 'success' }}" switch-on-text="{{ '开启' }}" switch-off-text="{{ '关闭' }}" switch-change="refreshSwitch(list.templateId, list.refreshEnabled)" type="checkbox" ng-model="list.refreshEnabled" ng-true-value="'ON'" ng-false-value="'OFF'" />
+                                        </td>
                                         <td>{{list.retryTimes}}</td>
                                         <td>{{list.dayTimesLimit}}</td>
                                         <td>{{list.codeLength}}</td>   

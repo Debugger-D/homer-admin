@@ -1,6 +1,7 @@
 angular.module('MetronicApp').controller('templateController', ['$scope', '$rootScope', '$timeout', 'ModalService', 'templateAPI', 'platformAPI',
 	function($scope, $rootScope, $timeout ,ModalService, templateAPI, platformAPI) {
     var modalPath = "views/template/templateModal.html";
+    var count = 0;
     platformAPI.all({}, function(data) {
         $scope.platformC = data.infos;
     }, function(err) {
@@ -11,7 +12,7 @@ angular.module('MetronicApp').controller('templateController', ['$scope', '$root
         var filterObj = $.extend( {}, {pageIndex: $scope.currentPage, pageSize: $scope.pageCount}, $scope.filterOptions);
 
         templateAPI.get(filterObj, function(data) {
-
+            $scope.dataInfo = [];
             if(data.infos.length < 1 || !$scope.filterOptions.platformCode) {
                 $scope.dataInfo = [];
                 $scope.totalItems = 0;
@@ -21,6 +22,7 @@ angular.module('MetronicApp').controller('templateController', ['$scope', '$root
                 $scope.totalItems = data.total;
                 $scope.platformAuthMsg = "";
             }
+            count = 0;
         }, function(err) {
             $scope.error_description = err.data.error.description;
             if(err.status == 403) {
@@ -88,6 +90,21 @@ angular.module('MetronicApp').controller('templateController', ['$scope', '$root
             }, function(err) {
                 toastr.error(err.data.error.description);
             });
+        });
+    }
+
+    // 是否刷新验证码
+    $scope.refreshSwitch = function(templateId, refreshEnabled) {
+        // 避免初始化就调用 onChange 事件插件
+        if(count < $scope.dataInfo.length ) {
+            count++;
+            return false;
+        }
+
+        templateAPI.isrefresh({templateId: templateId}, $.param({refreshEnabled: refreshEnabled}), function(data){
+            $scope.getList();
+        }, function(err) {
+            toastr.error(err.data.error.description);
         });
     }
 
