@@ -7,7 +7,7 @@ angular.module('MetronicApp').factory('templateAPI', ["$resource", function ($re
                 "Cache-Control" : "no-cache" 
             },
             url: trcsmsadminTemplateUrl+"/page/:platformCode"
-        },
+        }, 
         all: {
             method: 'GET',
             headers: {"Content-Type": "application/x-www-form-urlencoded"},

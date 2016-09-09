@@ -2,7 +2,7 @@ angular.module('MetronicApp').controller('platformController', ['$scope', '$root
 	function($scope, $rootScope, $timeout ,ModalService, platformAPI) {
     var modalPath = "views/platform/platformModal.html";
     var count = 0;
-    var count2 = 0;
+    var count2 = 0; 
 
     platformAPI.all({}, function(data) {
         $scope.platformC = data.infos;
