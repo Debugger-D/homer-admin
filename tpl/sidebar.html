@@ -1,82 +1,81 @@
 <div class="page-sidebar navbar-collapse collapse">
     <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" ng-class="{'page-sidebar-menu-closed': settings.layout.pageSidebarClosed}">
-            <li class="nav-item">
-            <a href="#/main/logsend" class="nav-link nav-toggle">
-                <i class="icon-clock"></i>
-                <span class="title">短信发送记录</span>
-            </a>
-        </li>
         <li class="nav-item">
-            <a href="#/main/logverify" class="nav-link nav-toggle">
+            <a href="#/main/mqBroker" class="nav-link nav-toggle">
                 <i class="icon-clock"></i>
-                <span class="title">短信校验记录</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="#/main/channel" class="nav-link nav-toggle">
-                <i class="icon-clock"></i>
-                <span class="title">短信渠道</span>
+                <span class="title">MQ Broker管理</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a href="#/main/platform" class="nav-link nav-toggle">
+            <a href="#/main/consumer" class="nav-link nav-toggle">
                 <i class="icon-clock"></i>
-                <span class="title">短信平台</span>
+                <span class="title">消费者管理</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="icon-clock"></i>
+                <span class="title">消息信息管理</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="#/main/messageinfo">
+                        <span><i class="icon-note"></i> 获取消息信息详情 </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/main/messagelog">
+                        <span><i class="icon-note"></i> 获取消息日志详情 </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#/main/consumer1" class="nav-link nav-toggle">
+                <i class="icon-clock"></i>
+                <span class="title">消息队列管理</span>
             </a>
         </li>
         <li class="nav-item">
-            <a href="#/main/template" class="nav-link nav-toggle">
+            <a href="#/main/topic" class="nav-link nav-toggle">
                 <i class="icon-clock"></i>
-                <span class="title">短信模板</span>
+                <span class="title">消息主题管理</span>
             </a>
         </li>
         <li class="nav-item">
-            <a href="#/main/platformchannel" class="nav-link nav-toggle">
+            <a href="#/main/subscriber" class="nav-link nav-toggle">
                 <i class="icon-clock"></i>
-                <span class="title">短信平台渠道关联</span>
+                <span class="title">消息主题订阅者管理</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#/main/whitelist" class="nav-link nav-toggle">
+                <i class="icon-clock"></i>
+                <span class="title">消息主题白名单管理</span>
             </a>
         </li>
         <li class="nav-item">
             <a href="javascript:;" class="nav-link nav-toggle">
                 <i class="icon-clock"></i>
-                <span class="title">用户解禁操作后台管理</span>
+                <span class="title">消息主题审核管理</span>
                 <span class="arrow"></span>
             </a>
             <ul class="sub-menu">
                 <li>
-                    <a href="#/main/unlock">
-                        <span><i class="icon-note"></i> 对超过短信发送次数的用户解禁 </span>
-                    </a>
-                </li>
-             </ul>
-        </li>
-        <li class="nav-item">
-            <a href="#/main/statistics" class="nav-link nav-toggle">
-                <i class="icon-clock"></i>
-                <span class="title">统计</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="icon-clock"></i>
-                <span class="title">短信服务</span>
-                <span class="arrow"></span>
-            </a>
-            <ul class="sub-menu">
-                <li>
-                    <a href="#/main/sms">
-                        <span><i class="icon-note"></i> 发送验证码 </span>
+                    <a href="#/main/checkhistory">
+                        <span><i class="icon-note"></i> 主题审核历史信息 </span>
                     </a>
                 </li>
                 <li>
-                    <a href="#/main/smsverify">
-                        <span><i class="icon-note"></i> 验证验证码 </span>
+                    <a href="#/main/checklist">
+                        <span><i class="icon-note"></i> 主题审核信息列表 </span>
                     </a>
                 </li>
-             </ul>
+            </ul>
         </li>
-
     </ul>
     <!-- END SIDEBAR MENU -->
 </div>

@@ -2,7 +2,7 @@
 所有url 全局变量
 ***/
 // 登录 url
-var baseUrl = '/authority/'
+var baseUrl = '/authority/';
 var accountUrl = '/account/';
 var loginUrl = '/account/user/login';
 var logoutUrl = '/account/user/logout';
@@ -15,23 +15,11 @@ var indexPageUrl = '/main/index';
 // admin
 var adminUrl = '/admin/admin/';
 // ===== 业务 ====
-// 业务 Base Url
-var trcsmsadminUrl = '/trcsmsadmin/';
-// ===== 短信渠道管理 =====
-var trcsmsadminChannelUrl = trcsmsadminUrl + 'admin/channel';
-// ===== 短信日志发送记录跟后台管理 =====
-var trcsmsadminLogsendUrl = trcsmsadminUrl + 'admin/logsend';
-// ===== 短信日志校验记录后台管理 =====
-var trcsmsadminLogverifyUrl = trcsmsadminUrl + 'admin/logverify';
-// ===== 短信平台后台管理 =====
-var trcsmsadminPlatformUrl = trcsmsadminUrl + 'admin/platform';
-// ===== 短信模板后台管理 =====
-var trcsmsadminTemplateUrl = trcsmsadminUrl + 'admin/template';
-// ===== 短信解禁 =====
-var trcsmsUnlockUrl = trcsmsadminUrl + 'admin/unlock';
-// ===== 短信平台渠道后台管理 =====
-var trcsmsadminPlatformChannelUrl = trcsmsadminUrl + 'admin/platformchannel';
 
+//============消息总线2.0===============
+  //===MQ Broker管理===
+var messageAllURL='/homer';
+  //===消费者管理===
 
 
 /* Metronic App */
@@ -177,7 +165,7 @@ MetronicApp.factory('settings', ['$rootScope', function($rootScope) {
             pageAutoScrollOnLoad: 1000 // auto scroll to top on page load
         },
         imagePath: './img',
-        siteTitle: '短信平台管理'
+        siteTitle: '消息总线'
     };
 
     $rootScope.settings = settings;
@@ -301,115 +289,114 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             resolve: {
             }
         })
-        // 短信渠道管理
-        .state('main.channel', {
-            url: "/channel",
+        //mqBroker管理
+        .state('main.mqBroker', {
+            url: "/mqBroker",
             views: {
                 'mainview@main': {
-                    templateUrl: 'views/channel/channel.html'
+                    templateUrl: 'views/mqBroker/mqBroker.html'
                 }
             },
-            data: {pageTitle: '短信渠道管理'},
+            data: {pageTitle: 'mqBroker管理'},
             resolve: {
             }
         })
-        // 日志发送记录
-        .state('main.logsend', {
-            url: "/logsend",
+        //消费者管理
+        .state('main.consumer', {
+            url: "/consumer",
             views: {
                 'mainview@main': {
-                    templateUrl: 'views/logsend/logsend.html'
+                    templateUrl: 'views/consumer/consumer.html'
                 }
             },
-            data: {pageTitle: '日志发送记录'},
+            data: {pageTitle: '消费者管理'},
             resolve: {
             }
         })
-        // 短信日志校验记录
-        .state('main.logverify', {
-            url: "/logverify",
+        //消息信息管理
+        .state('main.messageinfo', {
+            url: "/messageinfo",
             views: {
                 'mainview@main': {
-                    templateUrl: 'views/logverify/logverify.html'
+                    templateUrl: 'views/message/messageinfo.html'
                 }
             },
-            data: {pageTitle: '短信日志校验记录'},
+            data: {pageTitle: '消费者管理'},
             resolve: {
             }
         })
-        //  短信平台
-        .state('main.platform', {
-            url: "/platform",
+        //消息日志管理
+        .state('main.messagelog', {
+            url: "/messagelog",
             views: {
                 'mainview@main': {
-                    templateUrl: 'views/platform/platform.html'
+                    templateUrl: 'views/message/messagelog.html'
                 }
             },
-            data: {pageTitle: ' 短信平台'},
+            data: {pageTitle: '消息日志管理'},
             resolve: {
             }
         })
-        // 短信模板
-        .state('main.template', {
-            url: "/template",
+        //消息主题管理
+        .state('main.topic', {
+            url: "/topic",
             views: {
                 'mainview@main': {
-                    templateUrl: 'views/template/template.html'
+                    templateUrl: 'views/topic/topic.html'
                 }
             },
-            data: {pageTitle: '短信模板'},
+            data: {pageTitle: '消息主题管理'},
             resolve: {
             }
         })
-        // 短信平台渠道
-        .state('main.platformchannel', {
-            url: "/platformchannel",
+        //消息主题订阅者管理
+        .state('main.subscriber', {
+            url: "/subscriber",
             views: {
                 'mainview@main': {
-                    templateUrl: 'views/platformchannel/platformchannel.html'
+                    templateUrl: 'views/subscriber/subscriber.html'
                 }
             },
-            data: {pageTitle: '短信平台渠道'},
+            data: {pageTitle: '消息主题订阅者管理'},
             resolve: {
             }
         })
-        // 对超过短信发送次数的用户解禁
-        .state('main.unlock', {
-            url: "/unlock",
+        //消息主题白名单管理
+        .state('main.whitelist', {
+            url: "/whitelist",
             views: {
                 'mainview@main': {
-                    templateUrl: 'views/unlock/unlock.html'
+                    templateUrl: 'views/whitelist/whitelist.html'
                 }
             },
-            data: {pageTitle: '对超过短信发送次数的用户解禁'},
+            data: {pageTitle: '消息主题订阅者管理'},
             resolve: {
             }
         })
-        // 对超过短信发送次数的用户解禁
-        .state('main.sms', {
-            url: "/sms",
+        //消息主题审核历史信息
+        .state('main.checkhistory', {
+            url: "/checkhistory",
             views: {
                 'mainview@main': {
-                    templateUrl: 'views/sms/sms.html'
+                    templateUrl: 'views/check/checkhistory.html'
                 }
             },
-            data: {pageTitle: '发送验证码'},
+            data: {pageTitle: '消息主题审核历史信息'},
             resolve: {
             }
         })
-        // 对超过短信发送次数的用户解禁
-        .state('main.smsverify', {
-            url: "/smsverify",
+        //消息主题审核信息列表
+        .state('main.checklist', {
+            url: "/checklist",
             views: {
                 'mainview@main': {
-                    templateUrl: 'views/sms/smsverify.html'
+                    templateUrl: 'views/check/checklist.html'
                 }
             },
-            data: {pageTitle: '验证验证码'},
+            data: {pageTitle: '消息主题审核信息列表'},
             resolve: {
             }
         })
-        
 }]);
  
 /* Init global settings and run the app */
