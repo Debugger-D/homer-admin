@@ -33,12 +33,12 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-item">
-            <a href="#/main/consumer1" class="nav-link nav-toggle">
-                <i class="icon-clock"></i>
-                <span class="title">消息队列管理</span>
-            </a>
-        </li>
+        <!--<li class="nav-item">-->
+            <!--<a href="#/main/consumer1" class="nav-link nav-toggle">-->
+                <!--<i class="icon-clock"></i>-->
+                <!--<span class="title">消息队列管理</span>-->
+            <!--</a>-->
+        <!--</li>-->
         <li class="nav-item">
             <a href="#/main/topic" class="nav-link nav-toggle">
                 <i class="icon-clock"></i>
@@ -46,7 +46,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#/main/subscriber" class="nav-link nav-toggle">
+            <a href="#/main/subscriber/:topicTag" class="nav-link nav-toggle">
                 <i class="icon-clock"></i>
                 <span class="title">消息主题订阅者管理</span>
             </a>
@@ -72,6 +72,30 @@
                 <li>
                     <a href="#/main/checklist">
                         <span><i class="icon-note"></i> 主题审核信息列表 </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="icon-clock"></i>
+                <span class="title">消息图表一览</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="#/main/messagelog">
+                        <span><i class="icon-note"></i> 消息日志追踪图 </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/main/chartBroker">
+                        <span><i class="icon-note"></i> Broker信息图 </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/main/chartTopic">
+                        <span><i class="icon-note"></i> 消息主题信息图 </span>
                     </a>
                 </li>
             </ul>

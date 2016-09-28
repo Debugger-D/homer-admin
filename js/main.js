@@ -19,6 +19,10 @@ var adminUrl = '/admin/admin/';
 //============消息总线2.0===============
   //===MQ Broker管理===
 var messageAllURL='/homer';
+
+
+//=======流程图======
+var greeting='/greeting';
   //===消费者管理===
 
 
@@ -321,7 +325,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                     templateUrl: 'views/message/messageinfo.html'
                 }
             },
-            data: {pageTitle: '消费者管理'},
+            data: {pageTitle: '消息信息管理'},
             resolve: {
             }
         })
@@ -351,7 +355,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
         })
         //消息主题订阅者管理
         .state('main.subscriber', {
-            url: "/subscriber",
+            url: "/subscriber/:topicTag",
             views: {
                 'mainview@main': {
                     templateUrl: 'views/subscriber/subscriber.html'
@@ -394,6 +398,30 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                 }
             },
             data: {pageTitle: '消息主题审核信息列表'},
+            resolve: {
+            }
+        })
+        //broker图表
+        .state('main.chartBroker', {
+            url: "/chartBroker",
+            views: {
+                'mainview@main': {
+                    templateUrl: 'views/chart/chartBroker.html'
+                }
+            },
+            data: {pageTitle: 'Broker图表'},
+            resolve: {
+            }
+        })
+        //broker图表
+        .state('main.chartTopic', {
+            url: "/chartTopic",
+            views: {
+                'mainview@main': {
+                    templateUrl: 'views/chart/chartTopic.html'
+                }
+            },
+            data: {pageTitle: '消息主题图表'},
             resolve: {
             }
         })
