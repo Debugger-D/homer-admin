@@ -1,0 +1,60 @@
+<div class="modal-header">
+    <h3 class="caption-subject font-green bold">{{title}}白名单</h3>
+</div>
+
+<div class="modal-body">
+    <form role="form" name="form" ng-if="messageAdd">
+        <div class="form-group col-md-12">
+            <label class="control-label col-md-3">消息主题标签
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-7 input-icon right">
+                <input type="text" name="brokerName" placeholder="" class="form-control" ng-model="formData.topicTag" required>
+            </div>
+        </div>
+
+        <div class="form-group col-md-12">
+            <label class="control-label col-md-3">IP地址
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-7 input-icon right">
+                <input type="text" name="brokerName" placeholder="" class="form-control" ng-model="formData.ip" required>
+            </div>
+        </div>
+
+
+        <div class="err font-red">
+            <span>{{error_description}}</span>
+        </div>
+        <div class="form-group" style="text-align: center">
+            <button type="submit" class="btn btn-success" ng-click="post(formData)" ng-disabled="form.$invalid">提交</button>
+            <button class="btn" ng-click="cancel()">取消</button>
+        </div>
+    </form>
+    <form role="form" name="form" ng-if="messageEdit">
+
+        <div class="form-group col-md-12" ng-repeat="k in formData">
+            <!--<label class="control-label col-md-3">IP地址-->
+                <!--&lt;!&ndash;<span class="required" aria-required="true"> * </span>&ndash;&gt;-->
+            <!--</label>-->
+            <div class="col-md-7 input-icon right">
+                <input type="text" name="brokerName" placeholder="" class="form-control" ng-model="formData2[$index]">
+            </div>
+            <div lass="control-label col-md-2">
+                <a href="javascript:;" class="btn blue" ng-click="deletIP($index)">
+                    <i class="fa fa-edit"></i>  删除
+                </a>
+            </div>
+
+        </div>
+
+
+        <div class="err font-red">
+            <span>{{error_description}}</span>
+        </div>
+        <div class="form-group" style="text-align: center">
+            <button type="submit" class="btn btn-success" ng-click="post(formData2)" ng-disabled="form.$invalid">提交</button>
+            <button class="btn" ng-click="cancel()">取消</button>
+        </div>
+    </form>
+</div>

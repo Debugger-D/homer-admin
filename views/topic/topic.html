@@ -1,0 +1,126 @@
+<div class="orgnize" ng-controller="topicController">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <span class="caption-subject font-green bold uppercase">消息主题管理</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="javascript:;" ng-click="add()" class="btn green-meadow">
+                                    <i class="fa fa-plus"></i> 新建
+                                </a>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <page-per-counter class="form-group col-md-3"></page-per-counter>
+                                <div  class="col-md-1 col-sm-12"></div>
+
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+                                <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
+                                    <!--<select style="width:300px;" ng-model="filterOptions.platformCode" ng-options="x.platformCode as (x.platformCode+$index) for x in platformC" name="platformCode" class="form-control input-small input-inline" required>-->
+                                        <!--<option value="">请选择主题状态</option>-->
+                                    <!--</select>-->
+                                    <select style="width:300px;" ng-model="filterOptions.topicStatus" class="form-control input-small input-inline" required>
+                                        <option value="" selected>请选择主题状态</option>
+                                        <option value="PENDING">审核中</option>
+                                        <option value="NOPASS">不通过</option>
+                                        <option value="START">启用</option>
+                                        <option value="STOP">禁用</option>
+                                    </select>
+                                </div>
+                                <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
+                                    <input type="text" class="form-control input-md" ng-model="filterOptions.topicTag" placeholder="消息主题标签">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                                <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
+                                    <input type="text" class="form-control input-md" ng-model="filterOptions.topicName" placeholder="消息主题名称">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                                <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
+                                    <input type="text" class="form-control input-md" ng-model="filterOptions.appId" placeholder="应用ID">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                                <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
+                                    <input type="text" class="form-control input-md" ng-model="filterOptions.brokerTag" placeholder="MQ Broker标签">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="table-scrollable">
+                            <table class="table table-bordered table-hover table-striped table-condensed flip-content" id="sample_1" role="grid" aria-describedby="sample_1_info">
+                                <thead>
+                                <tr role="row">
+                                    <th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="序号"> 序号 </th>
+                                    <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="topic标签"> 消息主题标签</th>
+                                    <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="topic名称"> 消息主题名称</th>
+                                    <th class="" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="消息主题状态"> 消息主题状态</th>
+                                    <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="路由类型"> 路由类型 </th>
+                                    <th class="" tabindex="1" aria-controls="sample_2" rowspan="1" colspan="1" aria-label="顺序类型"> 顺序类型 </th>
+                                    <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="MQ Broker标签"> MQ Broker标签</th>
+                                    <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="topic描述"> 消息主题描述</th>
+                                    <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="应用ID"> 应用ID</th>
+                                    <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="脚本校验"> 脚本校验</th>
+                                    <th width="20%" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="操作"> 操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="gradeX" role="row" ng-repeat="list in dataInfo">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{list.topicTag}}</td>
+                                    <td>{{list.topicName}}</td>
+                                    <td ng-if="list.topicStatus=='审核中'||list.topicStatus=='未通过'">
+                                        {{list.topicStatus}}
+                                    </td>
+                                    <td ng-if="list.topicStatus=='启用'||list.topicStatus=='禁用'">
+                                        <select name="" class="form-control" ng-model="list.topicStatus" ng-change="change(list.topicTag)">
+                                            <option value="启用">启用</option>
+                                            <option value="禁用">禁用</option>
+                                        </select>
+                                    </td>
+                                    <td>{{list.routeType}}</td>
+                                    <td>{{list.orderType=="有序"?"有序":"无序"}}</td>
+                                    <td>{{list.brokerTag}}</td>
+                                    <td>{{list.topicDesc}}</td>
+                                    <td>{{list.appId}}</td>
+                                    <td>{{list.scriptValidtion}}</td>
+                                    <!--<td>{{list.topicStatus | filterStatus}}</td>-->
+                                    <td>
+                                        <a href="javascript:;" ng-click="edit(list)" class="btn blue">
+                                            <i class="fa fa-edit"></i>  修改
+                                        </a>
+                                        <a  href="javascript:;" ng-click="delet(list.topicTag)" class="btn red-intense">
+                                            <i class="fa fa-trash"></i> 删除
+                                        </a>
+                                        <a  href="javascript:;" class="btn green" ui-sref="main.subscriber({'topicTag':list.topicTag})">
+                                            <i class="icon icon-list"></i> 订阅者
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="padding: 20px 0px; text-align: center;font-size: 18px; font-weight: bold; color: #cc9f77;" ng-show="platformAuthMsg">
+                            {{platformAuthMsg}}
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 text-center">
+                                <uib-pagination ng-change="pageChanged()" boundary-links="true" total-items="totalItems" items-per-page="pageCount" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" max-size="10"></uib-pagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

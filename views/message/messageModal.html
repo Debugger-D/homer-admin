@@ -1,0 +1,94 @@
+<div class="modal-header">
+    <h3 class="caption-subject font-green bold">{{title}}消息</h3>
+</div>
+
+<div class="modal-body">
+    <form role="form" name="form">
+        <div class="form-group col-md-12">
+            <label class="control-label col-md-4">消息密匙
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-7 input-icon right">
+                <input type="text" name="brokerTag" placeholder="" class="form-control" ng-model="formData.messageKey" required>
+            </div>
+        </div>
+
+        <div class="form-group col-md-12" >
+            <label class="control-label col-md-4">请求类型
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-7 input-icon right">
+                <select type="text" name="brokerName" placeholder="" class="form-control" ng-model="formData.requestType" required>
+                    <option value="GET">GET</option>
+                    <option value="POST">POST</option>
+                    <option value="PUT">PUT</option>
+                    <option value="HEAD">HEAD</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group col-md-12" >
+            <label class="control-label col-md-4">消息主题标签
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-7 input-icon right">
+                <input type="text" name="brokerName" placeholder="" class="form-control" ng-model="formData.messageTopic" required>
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-12">
+            <label class="control-label col-md-4">消息头部
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-7 input-icon right">
+                <input type="text" name="host" placeholder="格式要求：{xxx:xxx}" class="form-control" ng-model="formData.messageHeaders" required>
+            </div>
+        </div>
+
+        <!--<div class="form-group col-md-12">-->
+            <!--<label class="control-label col-md-4">消息头第二部分-->
+                <!--<span class="required" aria-required="true"> * </span>-->
+            <!--</label>-->
+            <!--<div class="col-md-7 input-icon right">-->
+                <!--<input type="text" name="host" placeholder="" class="form-control" ng-model="formData.messageHeaderSecond" required>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="form-group col-md-12">
+            <label class="control-label col-md-4">消息体
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-7 input-icon right">
+                <input type="text" name="port" placeholder="" class="form-control" ng-model="formData.messageBody" required>
+            </div>
+        </div>
+
+        <div class="form-group col-md-12">
+            <label class="control-label col-md-4">所属应用Id
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-7 input-icon right">
+                <input type="text" name="userName" placeholder="" class="form-control" ng-model="formData.appId" required>
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-12">
+            <label class="control-label col-md-4"> 消息订阅者集合
+                <!--<span class="required" aria-required="true"> * </span>-->
+            </label>
+            <div class="col-md-7 input-icon right">
+                <input type="text" name="password" placeholder="" class="form-control" ng-model="formData.messageSubscribers">
+            </div>
+        </div>
+
+        <div class="err font-red">
+            <span>{{error_description}}</span>
+        </div>
+        <div class="form-group" style="text-align: center">
+            <button type="submit" class="btn btn-success" ng-click="post(formData)" ng-disabled="form.$invalid">提交</button>
+            <button class="btn" ng-click="cancel()">取消</button>
+        </div>
+    </form>
+</div>

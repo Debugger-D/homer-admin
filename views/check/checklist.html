@@ -1,0 +1,87 @@
+<div class="orgnize" ng-controller="checklistController">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <span class="caption-subject font-green bold uppercase">消息主题管理</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-12">-->
+                                <!--<a href="javascript:;" ng-click="add()" class="btn green-meadow">-->
+                                    <!--<i class="fa fa-plus"></i> 新建-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<br/>-->
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <page-per-counter class="form-group col-md-3"></page-per-counter>
+                                <div  class="col-md-1 col-sm-12"></div>
+
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+                                <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
+                                    <span class="required" aria-required="true"> * </span>&nbsp;
+                                    <select style="width:300px;" ng-model="filterOptions.checkStatus" class="form-control input-small input-inline" required>
+                                        <option value="" selected>请选择审核状态</option>
+                                        <option value="待审核">待审核</option>
+                                        <option value="不通过">不通过</option>
+                                        <option value="通过">通过</option>
+                                    </select>
+                                </div>
+                                <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
+                                    <span class="required" aria-required="true"> * </span>&nbsp;
+                                    <input type="text" class="form-control input-md input-inline" ng-model="filterOptions.topicTag" placeholder="主题标签" required>
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-scrollable">
+                            <table class="table table-bordered table-hover table-striped table-condensed flip-content" id="sample_1" role="grid" aria-describedby="sample_1_info">
+                                <thead>
+                                <tr role="row">
+                                    <th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="序号"> 序号 </th>
+                                    <th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="主题标签"> 主题标签 </th>
+                                    <th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="审核状态"> 审核状态</th>
+                                    <th class="" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="审核ID"> 审核ID</th>
+                                    <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="审核意见"> 审核意见</th>
+                                    <th class="" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="审核日期"> 审核日期</th>
+                                    <th width="20%" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="操作"> 操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="gradeX" role="row" ng-repeat="x in dataInfo">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{x.topicTag}}</td>
+                                    <td>{{x.checkStatus}}</td>
+                                    <td>{{x.checkId}}</td>
+                                    <td>{{x.checkNote}}</td>
+                                    <td>{{x.checkDate |date:"yyyy/MM/dd HH:mm:ss"}}</td>
+                                    <td>
+                                        <a href="javascript:;" ng-click="edit(x)" class="btn blue">
+                                            <i class="fa fa-edit"></i>  审核
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="padding: 20px 0px; text-align: center;font-size: 18px; font-weight: bold; color: #cc9f77;" ng-show="platformAuthMsg">
+                            {{platformAuthMsg}}
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 text-center">
+                                <uib-pagination ng-change="pageChanged()" boundary-links="true" total-items="totalItems" items-per-page="pageCount" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" max-size="10"></uib-pagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

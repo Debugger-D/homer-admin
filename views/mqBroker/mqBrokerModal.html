@@ -1,0 +1,128 @@
+<div class="modal-header">
+    <h3 class="caption-subject font-green bold">{{title}}MQ Broker</h3>
+</div>
+
+<div class="modal-body">
+    <form role="form" name="form">
+        <div class="form-group col-md-12">
+            <label class="control-label col-md-3">broker标签
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-7 input-icon right">
+                <input type="text" name="brokerTag" placeholder="" class="form-control" ng-model="formData.brokerTag" required>
+            </div>
+        </div>
+
+        <div class="form-group col-md-12" ng-if="brokerStatusBlock">
+            <label class="control-label col-md-3">broker名称
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-7 input-icon right">
+                <input type="text" name="brokerName" placeholder="" class="form-control" ng-model="formData.brokerName" required>
+            </div>
+        </div>
+
+        <div class="form-group col-md-12" ng-if="brokeredit">
+            <label class="control-label col-md-3">broker名称
+                <!--<span class="required" aria-required="true"> * </span>-->
+            </label>
+            <div class="col-md-7 input-icon right">
+                <input type="text" name="brokerName" placeholder="" class="form-control" ng-model="formData.brokerName">
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-12">
+            <label class="control-label col-md-3">IP地址
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-7 input-icon right">
+                <input type="text" name="host" placeholder="" class="form-control" ng-model="formData.host" required>
+            </div>
+        </div>
+
+        <div class="form-group col-md-12">
+            <label class="control-label col-md-3">端口号
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-7 input-icon right">
+                <input type="text" name="port" placeholder="" class="form-control" ng-model="formData.port" required>
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-12">
+            <label class="control-label col-md-3">用户名称
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-7 input-icon right">
+                <input type="text" name="userName" placeholder="" class="form-control" ng-model="formData.userName" required>
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-12">
+            <label class="control-label col-md-3"> 密码
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-7 input-icon right">
+                <input type="text" name="password" placeholder="" class="form-control" ng-model="formData.password" required>
+            </div>
+        </div>
+
+        <div class="form-group col-md-12">
+            <label class="control-label col-md-3">  虚拟主机
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-7 input-icon right">
+                <input type="text" name="virtualHost" placeholder="" class="form-control" ng-model="formData.virtualHost"  required>
+            </div>
+        </div>
+
+        <div class="form-group col-md-12" ng-if="brokerStatusBlock">
+            <label class="control-label col-md-3">broker状态
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-7 input-icon right">
+                <!--<input type="text" name="brokerStatus" placeholder="" class="form-control" ng-model="formData.brokerStatus" required>-->
+                <select name="" class="form-control" ng-model="formData.brokerStatus">
+                    <option value="ONLINE">上线</option>
+                    <option value="OFFLINE">下线</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group col-md-12">
+            <label class="control-label col-md-3">主机区域
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-7 input-icon right">
+                <select name="" class="form-control" ng-model="formData.region">
+                    <option value="下沙">下沙</option>
+                    <option value="阿里云">阿里云</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group col-md-12">
+            <label class="control-label col-md-3">  发布确认
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-7 input-icon right">
+                <!--<input type="text" name="publisherConfirm" placeholder="" class="form-control" ng-model="formData.publisherConfirm"  required>-->
+                <select name="" class="form-control" ng-model="formData.publisherConfirm">
+                    <option value="true" ng-selected="formData.publisherConfirm==true">是</option>
+                    <option value="false" ng-selected="formData.publisherConfirm==false">否</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="err font-red">
+            <span>{{error_description}}</span>
+        </div>
+        <div class="form-group" style="text-align: center">
+            <button type="submit" class="btn btn-success" ng-click="post(formData)" ng-disabled="form.$invalid">提交</button>
+            <button class="btn" ng-click="cancel()">取消</button>
+        </div>
+    </form>
+</div>

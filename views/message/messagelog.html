@@ -1,0 +1,208 @@
+<div class="orgnize" ng-controller="messagelogController">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <span class="caption-subject font-green bold uppercase">消息日志管理</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
+                                    <input type="text" class="form-control input-md" ng-model="filterOptions.messagekey" placeholder="消息秘钥">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="messageTrace">
+                        <h3 style="text-align: center">消息追踪图</h3><br>
+                        <div style="text-align: center ;display: none">
+                            <div class="exdiv" >
+                                <div class="exColor" style="background:#EABE25 " ></div>
+                                BORN
+                            </div>
+                            <div class="exdiv" >
+                                <div class="exColor" style="background:#4CC5C0 " ></div>
+                                <div style="display: inline-block ;line-height: 25px;"> RECEIVE</div>
+                            </div>
+                            <div class="exdiv" >
+                                <div class="exColor" style="background:#7CA5D8 " ></div>
+                                SAVE
+                            </div>
+                            <div class="exdiv" >
+                                <div class="exColor" style="background:#434348 " ></div>
+                                ENQUEUE
+                            </div>
+                            <div class="exdiv" >
+                                <div class="exColor" style="background:#7CB5EC " ></div>
+                                DEQUEUE
+                            </div>
+                            <div class="exdiv" >
+                                <div class="exColor" style="background:#8085EA " ></div>
+                                DELIVERY
+                            </div>
+                            <div class="exdiv" >
+                                <div class="exColor" style="background:#F8A45B " ></div>
+                                NOTIFY
+                            </div>
+
+
+                        </div>
+                        <div style="" class="chart" >
+                            <div style="" class="chart-timeline">
+                                <div style="" class="chartGh">
+                                    <div style="left: 0px" class="timeline-time">0</div>
+                                </div>
+                                <div style="" class="chartGh">
+                                    <div style="" class="timeline-time">{{timepoint}}</div>
+                                </div>
+                                <div style="" class="chartGh">
+                                    <div style="" class="timeline-time">{{timepoint*2}}</div>
+
+                                </div>
+                                <div style="" class="chartGh">
+                                    <div style="" class="timeline-time">{{timepoint*3}}</div>
+                                </div>
+                                <div style="" class="chartGh">
+                                    <div style="" class="timeline-time">{{timepoint*4}}</div>
+                                </div>
+                                <div style="" class="chartGh">
+                                    <div style="" class="timeline-time">{{timepoint*5}}</div>
+                                </div>
+                                <div style="" class="chartGh">
+                                    <div style="" class="timeline-time">{{timepoint*6}}</div>
+                                </div>
+                                <div style="" class="chartGh">
+                                    <div style="" class="timeline-time">{{timepoint*7}}</div>
+                                </div>
+                                <div style="" class="chartGh">
+                                    <div style="" class="timeline-time">{{timepoint*8}}</div>
+                                </div>
+                                <div style="border-right:2px solid #ddd;" class="chartGh">
+                                    <div style="" class="timeline-time">{{timepoint*9}}</div>
+                                    <div style="left: 90%" class="timeline-time">{{timepoint*10}}</div>
+                                </div>
+                                <!--<div style="width: 0% ;border:none;" class="chartGh">-->
+                                    <!--<div style="" class="chartStatus">{{endStatus}}</div>-->
+                                <!--</div>-->
+                            </div>
+                            <div style="" class="chartBody">
+                                <div style="width:0%;"class="floatL chartBody-item">
+
+                                </div>
+                                <div style="width: {{timeL1}}%;"class="floatL chartBody-item" ng-show="chart1">
+                                    <div style="margin-top:60px;  background: #EABE25;" class="chartBodytime">
+                                        <div style="" >{{time1}}</div>
+                                    </div>
+                                    <div style="" class="chartStatus">BORN</div>
+                                </div>
+                                <div style="width: {{timeL2}}%;"class="floatL chartBody-item"ng-show="chart2">
+                                    <div style="margin-top:100px;  background: #4CC5C0;" class="chartBodytime">
+                                        <div style="" >{{time2}}</div>
+                                    </div>
+                                    <div style="" class="chartStatus">RECEIVE</div>
+                                </div>
+                                <div style="width: {{timeL3}}%;"class="floatL chartBody-item"ng-show="chart3">
+                                    <div style="margin-top:140px; background: #7CA5D8;" class="chartBodytime">
+                                        <div style="">{{time3}}</div>
+                                    </div>
+                                    <div style="" class="chartStatus">SAVE</div>
+                                </div>
+                                <div style="width: {{timeL4}}%;"class="floatL chartBody-item"ng-show="chart4">
+                                    <div style="margin-top:190px; background: #434348;" class="chartBodytime">
+                                        <div style="">{{time4}}</div>
+                                    </div>
+                                    <div style="" class="chartStatus">ENQUEUE</div>
+                                </div>
+                                <div style="width: {{timeL5}}%;"class="floatL chartBody-item"ng-show="chart5">
+                                    <div style="margin-top:230px; background: #7CB5EC;" class="chartBodytime">
+                                        <div style="">{{time5}}</div>
+                                    </div>
+                                    <div style="" class="chartStatus">DEQUEUE</div>
+                                </div>
+                                <div style="width: {{timeL6}}%;"class="floatL chartBody-item"ng-show="chart6">
+                                    <div style="margin-top:270px; background: #8085EA;" class="chartBodytime">
+                                        <div style="">{{time6}}</div>
+                                    </div>
+                                    <div style="" class="chartStatus">DELIVERY</div>
+                                </div>
+                                <div style="width: {{timeL7}}%; border-right: 2px solid #FF676D;"class="floatL chartBody-item" ng-show="chart7">
+                                    <div style="margin-top:310px; background: #F8A45B;" class="chartBodytime">
+                                        <div style="">{{time7}}</div>
+                                    </div>
+                                    <div style="" class="chartStatus">NOTIFY</div>
+                                </div>
+                                <div style="width: 0%; border-right: 0px solid #FF676D; position: relative;"class="floatL " >
+                                    <div style="" class="chartStatus">{{endStatus}}</div>
+                                </div>
+                                <!--<div style=";"class="floatL chartBody-item">-->
+                                <!--&lt;!&ndash;<div style="margin-top:310px; background: #90EE7D;" class="chartBodytime">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div style="">50</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--</div>-->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-scrollable">
+                        <table class="table table-bordered table-hover table-striped table-condensed flip-content" id="sample_2" role="grid" aria-describedby="sample_1_info">
+                            <thead>
+                            <tr role="row">
+                                <!--<th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="序号"> 序号 </th>-->
+                                <th class="" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="消息ID">消息ID</th>
+                                <th class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="日志信息"> 日志信息</th>
+                                <th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="日志类型"> 日志类型 </th>
+                                <th class="" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="日志时间">日志时间</th>
+                                <th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="日志内容"> 日志内容 </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="gradeX" role="row" ng-repeat="data in msi">
+                                <!--<td>{{$index+1}}</td>-->
+                                <td>{{data.messageId}}</td>
+                                <td>{{data.logInfo}}</td>
+                                <td>{{data.logType}}</td>
+                                <td>{{data.logTime |date:"yyyy/MM/dd HH:mm:ss"}}</td>
+                                <td>
+                                    <a href="javascript:;" ng-click="detail(data.logContent)" class="btn blue">
+                                         内容
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- ======================================== 弹窗 ==================================== -->
+                    <!-- ==========日志主体========== -->
+                    <div class="modal fade" id="mesbody" tabindex="-1" role="dialog" aria-labelledby="configMsg" aria-hidden="true">
+                        <div class="modal-dialog" style="width:1200px;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">日志主体</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <div class="gridStyle">
+                                            <div class="panel panel-default table-responsive">
+                                                {{logContent}}
+                                            </div>
+                                            <pagenav conf="paginationConf"></pagenav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding: 20px 0px; text-align: center;font-size: 18px; font-weight: bold; color: #cc9f77;" ng-show="platformAuthMsg">
+                        {{platformAuthMsg}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
