@@ -348,3 +348,13 @@ to {fill: #FFFFFF;}
     display: inline-block;
     width: 150px;
 }
+/****************************/
+.paddingTable td {
+    padding: 8px 0;
+}
+#sample_1 td{
+    adding: 8px 0;
+}
+.tdbold{
+    font-weight: bold;
+}

@@ -29,7 +29,7 @@ angular.module('MetronicApp').factory('subscriberAPI', ["$resource", function ($
         },
         isrefresh: {
             method: 'PUT',
-            url: messageAllURL+'/isrefresh/:templateId',
+            url: messageAllURL+'/topicsubscriber/status',
             headers: {"Content-Type": "application/x-www-form-urlencoded"}
         }
     })

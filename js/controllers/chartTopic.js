@@ -1,9 +1,14 @@
 /**
  * Created by Administrator on 2016/9/27.
  */
-angular.module('MetronicApp').controller('chartTopicController', ['$scope', '$modal','$rootScope', '$timeout', 'ModalService', 'chartAPI',
-    function($scope,$modal, $rootScope, $timeout ,ModalService,chartAPI) {
-        var myChart = echarts.init(document.getElementById('chartBroker'));
+angular.module('MetronicApp').controller('chartTopicController', ['$scope', '$modal','$rootScope', '$timeout', 'ModalService', 'chartAPI', '$stateParams',
+    function($scope,$modal, $rootScope, $timeout ,ModalService,chartAPI, $stateParams) {
+        $scope.address={};
+        chartAPI.gettopic({},function (data) {
+            $scope.division=data.result;
+        });
+        var myChart = echarts.init(document.getElementById('chartTopic'));
+        //=======echart通用参数=========
         var　option = {
             title : {
                 text: 'Broker数据图',
@@ -41,35 +46,107 @@ angular.module('MetronicApp').controller('chartTopicController', ['$scope', '$mo
             series :''//data.serieses
 
         };
+        $scope.submit=function (data) {
+            $scope.chartShow=false;
+            console.log($scope.filterObj)
 
-        chartAPI.gettest({},function (data) {
-            console.log(data)
-            console.log(data.xAxis)
-            var slength=data.serieses.length
-            var names=[]
-            for(var i=0;i<slength;i++){
-                names.push(data.serieses[i].seriesName)
-                data.serieses[i]=$.extend( {},{
-                    type:'line',
-                    smooth:true,
-                    itemStyle: {normal: {areaStyle: {type: 'shine'}}},
-                    name: data.serieses[i].seriesName,
-                    data:data.serieses[i].series
-                })
+
+            //========请求数据=======
+            chartAPI.chartdata({},JSON.stringify($scope.filterObj),function (data) {
+                $scope.platformAuthMsg="";
+                if(data.serieses){
+                    $scope.chartShow=true;
+                }else{
+                    $scope.platformAuthMsg="暂无数据"
+                }
+                var slength=data.serieses.length
+                var names=[]
+                for(var i=0;i<slength;i++){
+                    names.push(data.serieses[i].seriesName)
+                    data.serieses[i]=$.extend( {},{
+                        type:'line',
+                        smooth:true,
+                        itemStyle: {normal: {areaStyle: {type: 'shine'}}},
+                        name: data.serieses[i].seriesName,
+                        data:data.serieses[i].series
+                    })
+                }
+                //修改系统参数
+                option.legend.data=names;
+                option.xAxis[0].data=data.xAxis;
+                option.series=data.serieses
+                // 为echarts对象加载数据
+                console.log('###22222');
+                console.log(option);
+                myChart.clear();
+                console.log($scope.filterObj)
+                myChart.setOption(option);
+
+            },function () {
+                $scope.chartShow=false;
+                $scope.platformAuthMsg="系统异常"
+            })
+        }
+
+
+
+        $scope.filterObj = $.extend( {}, {broker: '', topic: '',statisticalType:'',chartType:'P1',valueType:'TOTAL_NUMBER',period:'ONEHOUR',queryTime:''});
+        console.log($stateParams.broker)
+        $scope.address.time='P1';
+        $scope.address.status='TOTAL_NUMBER';
+        if($stateParams.broker!=":broker"){
+            $scope.address.broker=$stateParams.broker
+            $scope.filterObj.broker=$stateParams.broker;
+            $scope.filterObj.statisticalType="BROKER"
+            $scope.submit();
+        }
+
+        //========提交请求数据=========
+        //broker图
+        $scope.broker=function(data){
+            $scope.filterObj.broker=data.broker;
+            $scope.filterObj.statisticalType="BROKER"
+            $scope.submit();
+        }
+        $scope.topic=function(data){
+            $scope.filterObj.topic=data.topic;
+            $scope.filterObj.statisticalType="TOPIC"
+            $scope.submit();
+        }
+        $scope.status=function(data){
+            $scope.filterObj.valueType=data.status.toString()
+            console.log(typeof ($scope.filterObj.valueType))
+            $scope.submit();
+        }
+
+
+        $scope.time=function(data){
+            console.log(data.time)
+            $scope.filterObj.chartType=data.time.toString();
+            console.log($scope.filterObj.chartType);
+            if($scope.filterObj.chartType=="P1"){
+                $scope.filterObj.period="ONEHOUR";
+            }else if($scope.filterObj.chartType=="P2"){
+                $scope.filterObj.period="ONEMINUTE";
             }
-            option.legend.data=names;
-            option.xAxis[0].data=data.xAxis;
-            option.series=data.serieses
-            console.log(names)
-            console.log(data.serieses)
-            // 为echarts对象加载数据
-            myChart.setOption(option);
-        })
-        $scope.division = { "辽宁省": {"沈阳市": ["和平区", "沈河区", "大东区","康平县", "法库县", "新民市"], "大连市": ["中山区", "金州区", "长海县", "瓦房店市", "普兰店市", "庄河市"],  "朝阳市": ["双塔区", "龙城区", "朝阳县", "建平县", "喀喇沁左翼蒙古族自治县", "北票市", "凌源市"], "葫芦岛市": ["连山区", "龙港区", "南票区", "绥中县", "建昌县", "兴城市"]} , "海南省": {"海口市": ["秀英区", "龙华区", "琼山区", "美兰区"], "三亚市": ["三亚市"], "省直辖县级行政单位": ["五指山市", "琼中黎族苗族自治县", "西沙群岛", "南沙群岛", "中沙群岛的岛礁及其海域"]}};
+            console.log($scope.filterObj.period)
+            $scope.submit();
+        }
 
-        $scope.submit = function (address) {
-            console.log(address.province,address.city,address.district)
-        };
+
+
+        myChart.on("click", function (param) {
+            if ($scope.filterObj.chartType=="P1"){
+                $scope.filterObj.chartType="P2";
+                $scope.filterObj.period="ONEMINUTE";
+                $scope.filterObj.queryTime=param.name.toString();
+                $scope.address.time='P2';
+                $scope.submit();
+            }
+            console.log(param.name)
+            // $scope.$apply($location.path('/main/chartTopic/'+param.name));
+
+        })
 
     }]);
 

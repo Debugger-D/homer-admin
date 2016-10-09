@@ -32,7 +32,7 @@ angular.module('MetronicApp').controller('whitelistController', ['$scope', '$roo
                 $scope.error_description&&($scope.error_description = err.data.error.description);
                 if(err.status == 403) {
                     $scope.platformAuthMsg = '您无权查看';
-                }else{$scope.platformAuthMsg = '消息不存在';}
+                }else{$scope.platformAuthMsg = '查不到数据';}
             });
         };
 
@@ -55,6 +55,7 @@ angular.module('MetronicApp').controller('whitelistController', ['$scope', '$roo
         }
 
         // 新增
+        $scope.formData={};
         $scope.add = function(data) {
             console.log(data);
             $scope.messageAdd=true;
@@ -72,14 +73,15 @@ angular.module('MetronicApp').controller('whitelistController', ['$scope', '$roo
                     // $scope.formData = formData;
 
                     $scope.title = "添加";
-                    $scope.formData = $scope.dataInfo;
-                    console.log($scope.formData)
+                    $scope.formData.topicTag =angular.copy(data)
+                    console.log($scope.formData.topicTag)
                     $scope.cancel = function() {
                         $modalInstance.dismiss('cancel');
                     };
                     //异步请求函数
                     $scope.post = function(newData) {
-                        whitelistAPI.add(JSON.stringify(newData), function(data) {
+                        console.log(newData)
+                        whitelistAPI.add(newData,{}, function(data) {
                             console.log('添加成功');
                             $scope.getList();
                             // ModalService.close();
@@ -136,23 +138,6 @@ angular.module('MetronicApp').controller('whitelistController', ['$scope', '$roo
         }
 
 
-
-        /*
-         // 是否刷新验证码
-         $scope.refreshSwitch = function(templateId, refreshEnabled) {
-         // 避免初始化就调用 onChange 事件插件
-         if(count < $scope.dataInfo.length ) {
-         count++;
-         return false;
-         }
-
-         templateAPI.isrefresh({templateId: templateId}, $.param({refreshEnabled: refreshEnabled}), function(data){
-         $scope.getList();
-         }, function(err) {
-         toastr.error(err.data.error.description);
-         });
-         }
-         */
         // 首次加载数据
-        $scope.getList();
+        // $scope.getList();
     }]);

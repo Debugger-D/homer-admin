@@ -36,7 +36,7 @@ angular.module('MetronicApp').controller('consumerController', ['$scope', '$root
                 $scope.error_description&&($scope.error_description = err.data.error.description);
                 if(err.status == 403) {
                     $scope.platformAuthMsg = '您无权查看';
-                }else{$scope.platformAuthMsg = '消息不存在';}
+                }else{$scope.platformAuthMsg = '查不到数据';}
             });
         };
         // 根据用户输入实时查询平台

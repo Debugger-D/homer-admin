@@ -1,21 +1,18 @@
 /**
  * Created by Administrator on 2016/9/20.
  */
-angular.module('MetronicApp').controller('subscriberController', ['$scope', '$rootScope', '$timeout','$stateParams', 'ModalService', 'subscriberAPI', '$uibModal',
-    function($scope, $rootScope, $timeout,$stateParams ,ModalService, subscriberAPI, $uibModal) {
+angular.module('MetronicApp').controller('subscriberController', ['$scope', '$rootScope', '$timeout','$stateParams', 'ModalService', 'subscriberAPI', 'topicAPI','$uibModal',
+    function($scope, $rootScope, $timeout,$stateParams ,ModalService, subscriberAPI,topicAPI, $uibModal) {
         var modalPath = "views/subscriber/subscriberModal.html";
+        var topicPath = "views/subscriber/stModal.html";
         var count = 0;
-        /* platformAPI.all({}, function(data) {
-         $scope.platformC = data.infos;
-         }, function(err) {
-         toastr.error(err.data.error.description)
-         })*/
         // 获取
         if($stateParams.topicTag!=':topicTag'){
             $scope.filterOptions={
                 topicTag:$stateParams.topicTag
             }
         }
+        //获取订阅者信息
         $scope.getList = function() {
             var filterObj = $.extend({},$scope.filterOptions);
             console.log(filterObj)
@@ -35,10 +32,34 @@ angular.module('MetronicApp').controller('subscriberController', ['$scope', '$ro
                 $scope.error_description&&($scope.error_description = err.data.error.description);
                 if(err.status == 403) {
                     $scope.platformAuthMsg = '您无权查看';
-                }else{$scope.platformAuthMsg = '消息不存在';}
+                }else{$scope.platformAuthMsg = '查不到数据';}
             });
         };
-        $scope.getList();
+        // 获取主题详情
+        $scope.gettopicList = function() {
+            var filterObj = $.extend({},$scope.filterOptions);
+
+            topicAPI.get(filterObj, function(data) {
+                // $scope.datatopicInfo = [];
+                console.log(data.infos)
+                if(data.infos.length < 1) {
+                    $scope.datatopicInfo = [];
+                    $scope.platformAuthMsg = '暂无数据';
+                } else {
+                    $scope.datatopicInfo = data.infos[0];
+                    console.log($scope.datatopicInfo)
+                    $scope.platformAuthMsg = "";
+                }
+                count = 0;
+            }, function(err) {
+                $scope.error_description&&($scope.error_description = err.data.error.description);
+                if(err.status == 403) {
+                    $scope.platformAuthMsg = '您无权查看';
+                }else{$scope.platformAuthMsg = '查不到数据';}
+            });
+        };
+         $scope.getList();
+         $scope.gettopicList();
 
         // 根据用户输入实时查询平台
         var timeout;
@@ -58,13 +79,54 @@ angular.module('MetronicApp').controller('subscriberController', ['$scope', '$ro
             $scope.getList();
         }
 
+        // 编辑主题1
+        $scope.edittopic1 = function(data) {
+            $scope.topic1=true;
+            $scope.topic2=false;
+            $scope.error_description= "";
+            ModalService.open($scope, topicPath, function(scope) {
+                scope.title = "编辑";
+                scope.formData = angular.copy(data);
+                scope.httpDisable = true;
+            }, function(newData) {
+                console.log(newData);
+                topicAPI.edit(JSON.stringify(newData), function(data) {
+                    $scope.getList();
+                    ModalService.close();
+                }, function(err) {
+                    $scope.error_description = err.data.error.description;
+                });
+            });
+        }
+        // 编辑主题2
+        $scope.edittopic2 = function(data) {
+            $scope.topic1=false;
+            $scope.topic2=true;
+            $scope.error_description= "";
+            ModalService.open($scope, topicPath, function(scope) {
+                scope.title = "编辑";
+                scope.formData = angular.copy(data);
+                scope.httpDisable = true;
+            }, function(newData) {
+                console.log(newData);
+                topicAPI.edit(JSON.stringify(newData), function(data) {
+                    $scope.getList();
+                    ModalService.close();
+                }, function(err) {
+                    $scope.error_description = err.data.error.description;
+                });
+            });
+        }
+
+
+
         // 新增
         $scope.add = function() {
             $scope.subscriberAdd=true;
             $scope.subscriberEdit=false;
             $scope.error_description= "";
             //林师兄用ui-bootstraps封装的模态框
-            $uibModal.open({
+           /* $uibModal.open({
                 animation: true,
                 backdrop: 'static',
                 templateUrl: modalPath,
@@ -72,7 +134,7 @@ angular.module('MetronicApp').controller('subscriberController', ['$scope', '$ro
                 size: 'lg',//sm||lg
                 controller: function($modalInstance, $scope) {
                     // $scope.title = title;
-                    // $scope.formData = formData;
+                    // $scope.formData.topicTag = data;
                     $scope.cancel = function() {
                             $modalInstance.dismiss('cancel');
                     };
@@ -91,6 +153,22 @@ angular.module('MetronicApp').controller('subscriberController', ['$scope', '$ro
                     }
                 },
                 resolve:  {}
+            });*/
+
+            ModalService.open($scope, modalPath, function(scope) {
+                scope.formData={};
+                scope.title = "编辑";
+                scope.formData.topicTag = $scope.dataInfo[0].topicTag;
+                console.log($scope.dataInfo)
+                console.log(scope.formData)
+                scope.httpDisable = true;
+            }, function(newData) {
+                subscriberAPI.add(JSON.stringify(newData), function(data) {
+                    $scope.getList();
+                    ModalService.close();
+                }, function(err) {
+                    $scope.error_description = err.data.error.description;
+                });
             });
         }
         /*//创建新IP
@@ -146,4 +224,23 @@ angular.module('MetronicApp').controller('subscriberController', ['$scope', '$ro
                 });
             });
         }
+
+
+
+        // =====是否刷新验证码========
+        $scope.refreshSwitch = function(subscriberId, refreshEnabled) {
+            // 避免初始化就调用 onChange 事件插件
+            if(count < $scope.dataInfo.length ) {
+                count++;
+                return false;
+            }
+
+            subscriberAPI.isrefresh({subscriberId: subscriberId}, $.param({}), function(data){
+                $scope.getList();
+            }, function(err) {
+                toastr.error(err.data.error.description);
+                $scope.getList();
+            });
+        }
+
     }]);

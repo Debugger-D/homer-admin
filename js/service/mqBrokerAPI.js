@@ -31,6 +31,14 @@ angular.module('MetronicApp').factory('mqBrokerAPI', ["$resource", function ($re
             method: 'PUT',
             headers: {"Content-Type": "application/json"},
             url: messageAllURL+"/broker/status"
+        },
+        getregion: {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Cache-Control" : "no-cache"
+            },
+            url: messageAllURL+"/popup/region"
         }
     })
 }]);

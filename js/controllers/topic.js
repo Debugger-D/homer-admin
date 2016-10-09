@@ -5,11 +5,30 @@ angular.module('MetronicApp').controller('topicController', ['$scope', '$rootSco
     function($scope, $rootScope, $timeout ,ModalService, topicAPI,$state) {
         var modalPath = "views/topic/topicModal.html";
         var count = 0;
-       /* platformAPI.all({}, function(data) {
-            $scope.platformC = data.infos;
+        //broker映射
+        $scope.transMap = {};
+        topicAPI.getregion({}, function(data) {
+            $scope.region = data.infos;
+            console.log($scope.region)
+            for(var i = 0; i < data.infos.length; i++) {
+                var dd = data.infos[i];
+                $scope.transMap[dd.templateCode] = dd.templateName;
+            }
         }, function(err) {
             toastr.error(err.data.error.description)
-        })*/
+        });
+        //app id 映射
+        $scope.transMap1 = {};
+        topicAPI.getappid({}, function(data) {
+            $scope.appid = data.infos;
+            console.log($scope.appid)
+            for(var i = 0; i < data.infos.length; i++) {
+                var dd = data.infos[i];
+                $scope.transMap1[dd.templateCode] = dd.templateName;
+            }
+        }, function(err) {
+            toastr.error(err.data.error.description)
+        })
         // 获取
         $scope.getList = function() {
             var filterObj = $.extend( {}, {pageIndex: $scope.currentPage, pageSize: $scope.pageCount}, $scope.filterOptions);
@@ -30,7 +49,7 @@ angular.module('MetronicApp').controller('topicController', ['$scope', '$rootSco
                 $scope.error_description&&($scope.error_description = err.data.error.description);
                 if(err.status == 403) {
                     $scope.platformAuthMsg = '您无权查看';
-                }else{$scope.platformAuthMsg = '消息不存在';}
+                }else{$scope.platformAuthMsg = '查不到数据';}
             });
         };
 
@@ -59,9 +78,9 @@ angular.module('MetronicApp').controller('topicController', ['$scope', '$rootSco
             $scope.error_description= "";
             ModalService.open($scope, modalPath, function(scope) {
                 scope.title = "添加";
+                scope.formData = {};
             }, function(newData) {
-                topicAPI.add(JSON.stringify(newData), function(data) {
-                    console.log('添加成功');
+                topicAPI.add({},JSON.stringify(newData), function(data) {
                     $scope.getList();
                     ModalService.close();
                 }, function(err) {

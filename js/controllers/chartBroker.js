@@ -5,6 +5,7 @@ angular.module('MetronicApp').controller('chartBrokerController', ['$scope', '$r
     function($scope, $rootScope, $timeout ,ModalService,chartAPI) {
         var myChart = echarts.init(document.getElementById('chartBroker'));
         chartAPI.gettest({},function (data) {
+            $scope.platformAuthMsg="";
             console.log(data)
             console.log(data.xAxis)
             var slength=data.serieses.length
@@ -57,35 +58,13 @@ angular.module('MetronicApp').controller('chartBrokerController', ['$scope', '$r
                     }
                 ],
                 series :data.serieses
-                /* [
-                    {
-                        name:'成交',
-                        type:'line',
-                        smooth:true,
-                        itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                        data:[10, 12, 21, 54, 260, 830, 710]
-                    },
-                    {
-                        name:'预购',
-                        type:'line',
-                        smooth:true,
-                        itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                        data:[30, 182, 434, 791, 390, 30, 10]
-                    },
-                    {
-                        name:'意向',
-                        type:'line',
-                        smooth:true,
-                        itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                        data:[1320, 1132, 601, 234, 120, 90, 20]
-                    }
-                ]*/
-
             };
 
 
             // 为echarts对象加载数据
             myChart.setOption(option);
+        },function () {
+            $scope.platformAuthMsg="系统异常"
         })
 
 

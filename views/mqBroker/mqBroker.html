@@ -74,7 +74,7 @@
                                     <td>
                                         <input bs-switch switch-on-color="{{ 'success' }}" switch-on-text="{{ 'ONLINE' }}" switch-off-text="{{ 'OFFLINE' }}" switch-change="refreshSwitch(list.brokerTag, list.brokerStatus)" type="checkbox" ng-model="list.brokerStatus" ng-true-value="'ONLINE'" ng-false-value="'OFFLINE'" />
                                     </td>
-                                    <td>{{list.region}}</td>
+                                    <td>{{transMap[list.region]||list.region}}</td>
                                     <td>{{list.host}}</td>
                                     <td>{{list.port}}</td>
                                     <td>{{list.virtualHost}}</td>

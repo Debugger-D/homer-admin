@@ -7,7 +7,7 @@ angular.module('MetronicApp').controller('messagelogController', ['$scope', '$ro
         var count = 0;
 
         // 获取
-
+        $scope.messageTrace=false;
         $scope.getList = function() {
             //var filterObj = $.extend( {}, {pageIndex: $scope.currentPage, pageSize: $scope.pageCount}, $scope.filterOptions);
             var filterObj = $.extend( {},$scope.filterOptions);
@@ -26,7 +26,7 @@ angular.module('MetronicApp').controller('messagelogController', ['$scope', '$ro
                 $scope.error_description&&($scope.error_description = err.data.error.description);
                 if(err.status == 403) {
                     $scope.platformAuthMsg = '您无权查看';
-                }else{$scope.platformAuthMsg = '消息不存在';}
+                }else{$scope.platformAuthMsg = '查不到数据';}
             });
         };
         //==============流程图==============
@@ -107,6 +107,7 @@ angular.module('MetronicApp').controller('messagelogController', ['$scope', '$ro
         $scope.$watch('filterOptions', function(newVal, oldVal) {
             $scope.platformAuthMsg = "";
             $scope.dataInfo = []
+            $scope.messageTrace=false;
             $scope.totalItems = 0;
             if (newVal !== oldVal) {
                 if (timeout) $timeout.cancel(timeout);
@@ -116,87 +117,6 @@ angular.module('MetronicApp').controller('messagelogController', ['$scope', '$ro
                 }, 500);
             }
         }, true);
-
-        $scope.getTimeF=function () {
-            $scope.messageTrace=true;
-            messagelogAPI.gettest({}, function(makeData) {
-                console.log(makeData)
-                console.log(makeData.xAxis)
-                console.log(makeData.serieses)
-                console.log(makeData.serieses.series,makeData.serieses.seriesName)
-                console.log(makeData.serieses.series[0])
-            })
-
-
-            var timeL=0;
-            var length=makeData[0].length
-            for(var i=1;i< length;i++){
-                timeL+=makeData[0][i].logTime;
-                console.log(timeL)
-            }
-            $scope.timepoint=Math.ceil(timeL/10);
-            //for(var i=1;i< length;i++){
-            console.log(makeData[0],makeData[0].length)
-           if(makeData[0].length>1){
-                $scope.time1=makeData[0][1].logTime;
-               $scope.chart1=true;
-               $scope.timeL1=makeData[0][1].logTime/timeL*100
-            };
-           if(makeData[0].length>2){
-               $scope.time2=makeData[0][2].logTime;
-               $scope.chart2=true;
-               $scope.timeL2=makeData[0][2].logTime/timeL*100
-
-           };
-           if(makeData[0].length>3){
-               $scope.time3=makeData[0][3].logTime;
-               $scope.chart3=true;
-               $scope.timeL3=makeData[0][3].logTime/timeL*100
-           };
-           if(makeData[0].length>4){
-               $scope.time4=makeData[0][4].logTime;
-               $scope.chart4=true;
-               $scope.timeL4=makeData[0][4].logTime/timeL*100
-           };
-           if(makeData[0].length>5){
-               $scope.time5=makeData[0][5].logTime;
-               $scope.chart5=true;
-               $scope.timeL5=makeData[0][5].logTime/timeL*100
-           };
-           if(makeData[0].length>6){
-               $scope.time6=makeData[0][6].logTime;
-               $scope.chart6=true;
-               $scope.timeL6=makeData[0][6].logTime/timeL*100
-           };
-           if(makeData[0].length>7){
-               $scope.time7=makeData[0][7].logTime;
-               $scope.chart7=true;$scope.timeL7=makeData[0][7].logTime/timeL*100
-           };
-                //$scope.time2=makeData[0][2].logTime//&&($scope.chart2=true);
-                //$scope.time3=makeData[0][3].logTime//&&($scope.chart3=true);
-                //$scope.time4=makeData[0][4].logTime//&&($scope.chart4=true);
-                //$scope.time5=makeData[0][5].logTime//&&($scope.chart5=true);
-                //$scope.time6=makeData[0][6].logTime//&&($scope.chart6=true);
-                console.log($scope.time7=makeData[0][7]&&makeData[0][7].logTime)//&&($scope.chart7=true);
-
-                //$scope.timeL1=makeData[0][1]&&makeData[0][1].logTime/timeL*100//-0.9;
-                //$scope.timeL2=makeData[0][2]&&makeData[0][2].logTime/timeL*100//-0.9;
-                //$scope.timeL3=makeData[0][3]&&makeData[0][3].logTime/timeL*100//-0.9;
-                //$scope.timeL4=makeData[0][4]&&makeData[0][4].logTime/timeL*100//-0.9;
-                //$scope.timeL5=makeData[0][5]&&makeData[0][5].logTime/timeL*100//-0.9;
-                //$scope.timeL6=makeData[0][6]&&makeData[0][6].logTime/timeL*100//-0.9;
-                //$scope.timeL7=makeData[0][7]&&makeData[0][7].logTime/timeL*100//-0.9;
-          /*  $scope.timeL1=makeData[0][1].logTime/timeL*100//-0.9;
-            $scope.timeL2=makeData[0][2].logTime/timeL*100//-0.9;
-            $scope.timeL3=makeData[0][3].logTime/timeL*100//-0.9;
-            $scope.timeL4=makeData[0][4].logTime/timeL*100//-0.9;
-            $scope.timeL5=makeData[0][5].logTime/timeL*100//-0.9;
-            $scope.timeL6=makeData[0][6].logTime/timeL*100//-0.9;
-            $scope.timeL7=makeData[0][7].logTime/timeL*100//-0.9;/*/
-            //}
-        }
-
-
 
     }]);
 

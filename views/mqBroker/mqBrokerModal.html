@@ -66,7 +66,7 @@
                 <span class="required" aria-required="true"> * </span>
             </label>
             <div class="col-md-7 input-icon right">
-                <input type="password" name="password" placeholder="" class="form-control" ng-model="formData.password" required>
+                <input type="text" name="password" placeholder="" class="form-control" ng-model="formData.password" required>
             </div>
         </div>
 
@@ -96,10 +96,10 @@
             <label class="control-label col-md-3">主机区域
                 <span class="required" aria-required="true"> * </span>
             </label>
+
             <div class="col-md-7 input-icon right">
-                <select name="" class="form-control" ng-model="formData.region">
-                    <option value="下沙">下沙</option>
-                    <option value="阿里云">阿里云</option>
+                <select name="" class="form-control" ng-model="formData.region" ng-options="x.templateCode as x.templateName for x in region">
+                    <option value="">请选择</option>
                 </select>
             </div>
         </div>

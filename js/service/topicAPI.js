@@ -35,6 +35,22 @@ angular.module('MetronicApp').factory('topicAPI', ["$resource", function ($resou
             method: 'PUT',
             url: messageAllURL+'/messagetopic/status/:templateId',
             headers: {"Content-Type": "application/x-www-form-urlencoded"}
+        },
+        getregion: {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Cache-Control" : "no-cache"
+            },
+            url: messageAllURL+"/popup/brokertag"
+        },
+        getappid: {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Cache-Control" : "no-cache"
+            },
+            url: messageAllURL+"/popup/app"
         }
     })
 }]);

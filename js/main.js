@@ -22,9 +22,9 @@ var messageAllURL='/homer';
 
 
 //=======流程图======
-var greeting='/greeting';
+var chart='/chart';
   //===消费者管理===
-
+var broker='/broker';
 
 /* Metronic App */
 var MetronicApp = angular.module("MetronicApp", [
@@ -317,15 +317,28 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             resolve: {
             }
         })
+        //查看所有消息
+        .state('main.messageall', {
+            url: "/messageall",
+            views: {
+                'mainview@main': {
+                    templateUrl: 'views/message/messageall.html'
+                }
+            },
+            data: {pageTitle: '所有消息信息'},
+            resolve: {
+            }
+        })
+
         //消息信息管理
         .state('main.messageinfo', {
-            url: "/messageinfo",
+            url: "/messageinfo/:messagekey",
             views: {
                 'mainview@main': {
                     templateUrl: 'views/message/messageinfo.html'
                 }
             },
-            data: {pageTitle: '消息信息管理'},
+            data: {pageTitle: '消息信息详情'},
             resolve: {
             }
         })
@@ -353,6 +366,18 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             resolve: {
             }
         })
+        //暂定
+        .state('main.topicinfo', {
+            url: "/topicinfo/:topicTag",
+            views: {
+                'mainview@main': {
+                    templateUrl: 'views/topic/topic.html'
+                }
+            },
+            data: {pageTitle: '消息主题详情'},
+            resolve: {
+            }
+        })
         //消息主题订阅者管理
         .state('main.subscriber', {
             url: "/subscriber/:topicTag",
@@ -361,7 +386,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                     templateUrl: 'views/subscriber/subscriber.html'
                 }
             },
-            data: {pageTitle: '消息主题订阅者管理'},
+            data: {pageTitle: '消息主题详情'},
             resolve: {
             }
         })
@@ -373,7 +398,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                     templateUrl: 'views/whitelist/whitelist.html'
                 }
             },
-            data: {pageTitle: '消息主题订阅者管理'},
+            data: {pageTitle: '消息白名单管理'},
             resolve: {
             }
         })
@@ -385,7 +410,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                     templateUrl: 'views/check/checkhistory.html'
                 }
             },
-            data: {pageTitle: '消息主题审核历史信息'},
+            data: {pageTitle: '主题审核历史信息'},
             resolve: {
             }
         })
@@ -415,13 +440,25 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
         })
         //broker图表
         .state('main.chartTopic', {
-            url: "/chartTopic",
+            url: "/chartTopic/:broker",
             views: {
                 'mainview@main': {
                     templateUrl: 'views/chart/chartTopic.html'
                 }
             },
             data: {pageTitle: '消息主题图表'},
+            resolve: {
+            }
+        })
+        //Broker饼图
+        .state('main.chartPie', {
+            url: "/chartPie",
+            views: {
+                'mainview@main': {
+                    templateUrl: 'views/chart/chartPie.html'
+                }
+            },
+            data: {pageTitle: 'Broker饼图'},
             resolve: {
             }
         })

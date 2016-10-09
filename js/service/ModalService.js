@@ -19,7 +19,6 @@ angular.module('MetronicApp').factory('ModalService', ['$http', '$uibModal', '$q
                 };
 
                 $scope.post = okFn || function(newData) {
-                    console.log(newData);
                     $modalInstance.dismiss('cancel');
                 }
 

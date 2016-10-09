@@ -39,7 +39,7 @@
                             <tr class="gradeX" role="row" ng-repeat="x in dataInfo">
                                 <!--<td>{{$index}}</td>-->
                                 <td>{{x.topicTag}}</td>
-                                <td>{{x.checkStatus}}</td>
+                                <td>{{x.checkStatus | checkStatus}}</td>
                                 <td>{{x.checkId}}</td>
                                 <td>{{x.checkNote}}</td>
                                 <td>{{x.checkDate |date:"yyyy/MM/dd HH:mm:ss"}}</td>

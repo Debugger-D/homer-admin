@@ -10,19 +10,60 @@ angular.module('MetronicApp').filter('filterStatus', [function () {
             "STOP": '禁用'
         }[input]
     }
-}]).filter('logisticsName', [function () {
+}]).filter('responseStatus', [function () {
     return function (input) {
         return {
-            "SF": "顺丰快递",
-            "STO": "申通快递",
-            "YTO": "圆通快递",
-            "YD": "韵达快递",
-            "ZTO": "中通快递",
-            "HTKY": "汇通快递",
-            "GTO": "国通快递",
-            "DBL": "德邦快递",
-            "HHTT": "天天快递",
-            "EMS": "EMS"
+            "SUCCESS": "响应成功",
+            "ERROR": "响应错误"
+        }[input]
+    }
+}]).filter('checkStatus', [function () {
+    return function (input) {
+        return {
+            "PASSED": "审核通过",
+            "NOPASS": "未通过",
+            "UNCHECK": "未审核"
+        }[input]
+    }
+}]).filter('messageStatus', [function () {
+    return function (input) {
+        return {
+            "ENQUEUE": "入队",
+            "ACCEPTED": "受理",
+            "WAITING": "等待",
+            "PROCESSING": "处理中",
+            "FINISH_SUCCESS": "成功",
+            "ACCEPTED": "失败",
+            "FINISH_ERROR": "错误"
+        }[input]
+    }
+}]).filter('logType', [function () {
+    return function (input) {
+        return {
+            "BORN_MESSAGE": "消息生成",
+            "RECEIVE_MESSAGE": "消息接收",
+            "SAVE_MESSAGE": "消息DB持久化",
+            "ENQUEUE_MESSAGE": "消息入队",
+            "WAIT_ENQUEUE_MESSAGE": "消息等待入队",
+            "DEQUEUE_MESSAGE": "消息出队",
+            "DELIVERY_MESSAGE": "消息投递",
+            "END_MESSAGE": "消息结束",
+            "NOTIFY_MESSAGE": "消息通知"
+        }[input]
+    }
+}]).filter('subscribeStatus', [function () {
+    return function (input) {
+        return {
+            "START": "启用",
+            "STOP": "禁用",
+            "FAILED": "失败"
+        }[input]
+    }
+}]).filter('routeType', [function () {
+    return function (input) {
+        return {
+            "CONSUME": "消费",
+            "NOTIFY": "通知"
         }[input]
     }
 }]);

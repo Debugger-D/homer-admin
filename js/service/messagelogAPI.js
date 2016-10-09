@@ -20,15 +20,6 @@ angular.module('MetronicApp').factory('messagelogAPI', ["$resource","$rootScope"
                 "Cache-Control" : "no-cache"
             },
             url: messageAllURL+"/messagelog/time/:messagekey"
-        },
-        gettest: {
-            method: 'GET',
-           // isArray: true,
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Cache-Control" : "no-cache"
-            },
-            url: greeting
-        },
+        }
     })
 }]);

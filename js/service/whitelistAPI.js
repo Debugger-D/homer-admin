@@ -13,9 +13,9 @@ angular.module('MetronicApp').factory('whitelistAPI', ["$resource", function ($r
             url: messageAllURL+"/topicwhitelist"
         },
         add: {
-            method: 'POST',
-            headers: {"Content-Type": "application/json"},
-            url: messageAllURL+"/topicwhitelist"
+            method: 'PUT',
+            headers: {"Content-Type": "application/x-www-form-urlencoded"},
+            url: messageAllURL+"/topicwhitelist/add"
         },
         edit: {
             method: 'PUT',

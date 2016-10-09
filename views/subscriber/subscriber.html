@@ -4,31 +4,93 @@
             <div class="portlet light">
                 <div class="portlet-title">
                     <div class="caption">
-                        <span class="caption-subject font-green bold uppercase">消息主题订阅者管理</span>
+                        <span class="caption-subject font-green bold uppercase">消息主题详情</span>
                     </div>
                 </div>
                 <div class="portlet-body">
-                    <div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a href="javascript:;" ng-click="add()" class="btn green-meadow">
-                                    <i class="fa fa-plus"></i> 新建
+                    <div style="word-wrap: break-word;width: 40%;float: right;">
+                        <div class="">
+                            <div class="col-md-12" style="padding: 0">
+                                <a href="javascript:;" ng-click="edittopic1(datatopicInfo)" class="btn green-meadow">
+                                   修改
+                                </a>
+                            </div><br>
+                        </div>
+                        <br>
+                        <div class="table-scrollable " >
+                            <table class="table paddingTable table-bordered table-hover table-striped table-condensed flip-content"  role="grid">
+                                <tr>
+                                    <td style="max-width: 200px;padding: 10px;" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="超时时间"> 超时时间 </td>
+                                    <td>{{datatopicInfo.timeout}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="最大连投数"> 最大连投数</td>                                            <td>{{datatopicInfo.maxTimes}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="连投率"> 连续投递速率</td>                                             <td>{{datatopicInfo.intervalTime}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="重发间隔"> 重发间隔</td>
+                                    <td>{{datatopicInfo.cronExpression}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="最高产速"> 最大生产速度</td>
+                                    <td>{{datatopicInfo.maxProduceSpeed}}</td>
+
+                                </tr>
+                                <tr>
+                                    <td width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="最大消费速度"> 最大消费速度</td>
+                                    <td>{{datatopicInfo.maxConsumeSpeed}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div style="word-wrap: break-word;width: 40%;float: left;">
+                        <div class="" >
+                            <div class="col-md-12" style="padding: 0">
+                                <a href="javascript:;" ng-click="edittopic2(datatopicInfo)" class="btn green-meadow">
+                                    修改
                                 </a>
                             </div>
+                            <br>
                         </div>
-                        <br/>
+                        <br>
+                        <div class="table-scrollable " >
+                            <table class="table paddingTable table-bordered table-hover table-striped table-condensed flip-content"  role="grid">
+                                <tr>
+                                    <td style="max-width: 200px;padding: 10px;" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1"aria-label="超时时间"> topic标签 </td>
+                                    <td>{{datatopicInfo.topicTag}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="max-width: 200px;padding: 10px;" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1"aria-label="超时时间"> topic名称 </td>
+                                    <td>{{datatopicInfo.topicName}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="最高产速"> 路由类型</td>
+                                    <td>{{list.routeType=="CONSUME"?"消费":"通知"}}</td>
+
+                                </tr>
+                                <tr>
+                                    <td width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="最大连投数"> MQ Broker标签</td>                                            <td>{{datatopicInfo.brokerTag}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="连投率"> 消息主题描述</td>                                             <td>{{datatopicInfo.topicDesc}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="最大消费速度"> 脚本校验</td>
+                                    <td>{{datatopicInfo.scriptValidtion}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div id="sample_1_wrapper" class="dataTables_wrapper no-footer" style="padding-top: 268px">
                         <div class="row">
-                            <!--<div class="col-md-12 col-sm-12">-->
-                                <!--<page-per-counter class="form-group col-md-3"></page-per-counter>-->
-                                <!--<div  class="col-md-1 col-sm-12"></div>-->
-
-                            <!--</div>-->
-                            <div class="col-md-12 col-sm-12">
-                                <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
-                                    <input type="text" class="form-control input-md" ng-model="filterOptions.topicTag" placeholder="消息主题标签">
-                                    <div class="form-control-focus"> </div>
-                                </div>
-
+                            <div class="col-md-12">
+                                <a href="javascript:;" ng-click="add(list.topicTag)" class="btn green-meadow">
+                                    <i class="fa fa-plus"></i> 新建
+                                </a>
                             </div>
                         </div>
                         <div class="table-scrollable">
@@ -51,7 +113,10 @@
                                     <td>{{list.subscriberId}}</td>
                                     <td>{{list.subscriberKey}}</td>
                                     <td>{{list.targetUrl}}</td>
-                                    <td>{{list.subscribeStatus}}</td>
+                                    <!--<td>{{list.subscribeStatus | subscribeStatus}}</td>-->
+                                    <td>
+                                        <input bs-switch switch-on-color="{{ 'success' }}" switch-on-text="{{ '启用' }}" switch-off-text="{{ '禁用' }}" switch-change="refreshSwitch(list.subscriberId, list.subscribeStatus)" type="checkbox" ng-model="list.subscribeStatus" ng-true-value="'START'" ng-false-value="'STOP'" />
+                                    </td>
                                     <td>{{list.topicTag}}</td>
                                     <td>{{list.remark}}</td>
                                     <td>

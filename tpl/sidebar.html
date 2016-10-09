@@ -7,12 +7,12 @@
             </a>
         </li>
 
-        <li class="nav-item">
-            <a href="#/main/consumer" class="nav-link nav-toggle">
-                <i class="icon-clock"></i>
-                <span class="title">消费者管理</span>
-            </a>
-        </li>
+        <!--<li class="nav-item">-->
+            <!--<a href="#/main/consumer" class="nav-link nav-toggle">-->
+                <!--<i class="icon-clock"></i>-->
+                <!--<span class="title">消费者管理</span>-->
+            <!--</a>-->
+        <!--</li>-->
 
         <li class="nav-item">
             <a href="javascript:;" class="nav-link nav-toggle">
@@ -22,10 +22,15 @@
             </a>
             <ul class="sub-menu">
                 <li>
-                    <a href="#/main/messageinfo">
-                        <span><i class="icon-note"></i> 获取消息信息详情 </span>
+                    <a href="#/main/messageall">
+                        <span><i class="icon-note"></i> 消息列表 </span>
                     </a>
                 </li>
+                <!--<li>-->
+                    <!--<a href="#/main/messageinfo/:messagekey">-->
+                        <!--<span><i class="icon-note"></i> 获取消息信息详情 </span>-->
+                    <!--</a>-->
+                <!--</li>-->
                 <li>
                     <a href="#/main/messagelog">
                         <span><i class="icon-note"></i> 获取消息日志详情 </span>
@@ -45,12 +50,12 @@
                 <span class="title">消息主题管理</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a href="#/main/subscriber/:topicTag" class="nav-link nav-toggle">
-                <i class="icon-clock"></i>
-                <span class="title">消息主题订阅者管理</span>
-            </a>
-        </li>
+        <!--<li class="nav-item">-->
+            <!--<a href="#/main/subscriber/:topicTag" class="nav-link nav-toggle">-->
+                <!--<i class="icon-clock"></i>-->
+                <!--<span class="title">消息主题订阅者管理</span>-->
+            <!--</a>-->
+        <!--</li>-->
         <li class="nav-item">
             <a href="#/main/whitelist" class="nav-link nav-toggle">
                 <i class="icon-clock"></i>
@@ -83,19 +88,24 @@
                 <span class="arrow"></span>
             </a>
             <ul class="sub-menu">
+                <!--<li>-->
+                    <!--<a href="#/main/messagelog">-->
+                        <!--<span><i class="icon-note"></i> 消息日志追踪图 </span>-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="#/main/chartBroker">-->
+                        <!--<span><i class="icon-note"></i> Broker对比信息图 </span>-->
+                    <!--</a>-->
+                <!--</li>-->
                 <li>
-                    <a href="#/main/messagelog">
-                        <span><i class="icon-note"></i> 消息日志追踪图 </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#/main/chartBroker">
-                        <span><i class="icon-note"></i> Broker信息图 </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#/main/chartTopic">
+                    <a href="#/main/chartTopic/:broker">
                         <span><i class="icon-note"></i> 消息主题信息图 </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/main/chartPie">
+                        <span><i class="icon-note"></i> Broker饼图 </span>
                     </a>
                 </li>
             </ul>
