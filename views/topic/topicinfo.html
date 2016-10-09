@@ -1,0 +1,98 @@
+<div class="orgnize" ng-controller="messageinfoController">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <span class="caption-subject font-green bold uppercase">消息信息详情</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="javascript:;" ng-click="resend(messageKey)" class="btn green-meadow">
+                                    重发消息
+                                </a>
+                            </div>
+                        </div>
+                        <br/>
+                    </div>
+                    <div class="table-scrollable " style="word-wrap: break-word;"  ng-show="tdBlock">
+                        <table class="table paddingTable table-bordered table-hover table-striped table-condensed flip-content" id="sample_1" role="grid" aria-describedby="sample_1_info">
+                            <tr>
+                                <td class="7 tdbold" style="min-width:170px;" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="messagekey"> 消息key </td>
+                                <td>{{messageKey}}</td>
+                            </tr>
+                            <tr>
+                                <td class="tdbold" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="messageTopic"> 消息主题</td>
+                                <td>{{messageTopic}}</td>
+                            </tr>
+                            <tr>
+                                <td class="tdbold" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="requestType"> 请求类型 </td>
+                                <td>{{requestType}}</td>
+                            </tr>
+                            <tr>
+                                <td class="tdbold" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="messageHeader"> 消息头部</td>
+                                <td>{{messageHeader}}</td>
+                            </tr>
+                            <tr>
+                                <td class="tdbold" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="messageSource"> 消息源IP</td>
+                                <td>{{messageSource}}</td>
+
+                            </tr>
+                            <tr>
+                                <td class="tdbold" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="MessageStatus"> 消息状态</td>
+                                <td>{{MessageStatus}}</td>
+                            </tr>
+                            <tr>
+                                <td class="tdbold" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="appId"> 应用名称</td>
+                                <td style="max-width:570px;" >{{appId}}</td>
+                            </tr>
+                            <tr class="gradeX" role="row">
+                                <td width="" class="tdbold" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="详情"> 消息主体</td>
+                                <td style="max-width:570px;">{{messageBody}}</td>
+                            </tr>
+                            <tr class="gradeX" role="row">
+                                <td width="" class="tdbold" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="详情"> 响应时间</td>
+                                <td>{{msi.date |date:"yyyy/MM/dd HH:mm:ss"}}</td>
+                            </tr>
+                            <tr class="gradeX" role="row">
+                                <td width="" class="tdbold" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="详情"> 响应主体</td>
+                                <td>{{msi.responseBody}}</td>
+                            </tr>
+                            <tr class="gradeX" role="row">
+                                <td width="" class="tdbold" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="详情"> 响应状态</td>
+                                <td>{{msi.responseStatus | responseStatus}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br><br>
+                    <div class="table-scrollable " style="word-wrap: break-word;">
+                        <table class="table table-bordered table-hover table-striped table-condensed flip-content"  id="sample_2" role="grid" aria-describedby="sample_1_info">
+                            <thead>
+                            <tr role="row">
+                                <th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="用户ID"> 序号 </th>
+                                <th class="" style="max-width: 300px" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="订阅者ID"> 订阅者ID</th>
+                                <th class="" style="max-width: 300px" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="用户key">用户key</th>
+                                <th class="" style="max-width: 500px" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="目标URL"> 目标URL </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="setData in messageSubscriberJ">
+                                <td  class="text-center">{{$index+1}}</td>
+                                <td style="max-width: 300px" class="text-center">{{setData.subscriberId}}</td>
+                                <td style="max-width: 300px" class="text-center">{{setData.subscriberKey}}</td>
+                                <td style="max-width: 500px; " class="text-center">{{setData.targetURI}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="padding: 20px 0px; text-align: center;font-size: 18px; font-weight: bold; color: #cc9f77;" ng-show="platformAuthMsg">
+                        {{platformAuthMsg}}
+                    </div>
+                    <div style="padding: 20px 0px; text-align: center;font-size: 18px; font-weight: bold; color: #cc9f77;">{{error_description}}</div>
+                </div>
+            </div>
+        </div>
+    </div>

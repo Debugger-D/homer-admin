@@ -1,0 +1,165 @@
+<div class="modal-header">
+    <h3 class="caption-subject font-green bold">{{title}}主题</h3>
+</div>
+
+<div class="modal-body">
+    <form role="form" name="form">
+
+        <div ng-if="topic2">
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">  消息主题标签
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <div class="col-md-7 input-icon right">
+                    <input type="text" name="dayTimesLimit" placeholder="" class="form-control" ng-model="formData.topicTag"disabled  >
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">顺序类型
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <div class="col-md-7 input-icon right">
+                    <!--<input type="text" name="templateCode" placeholder="" class="form-control" ng-model="formData.orderType">-->
+                    <select name="" class="form-control" ng-model="formData.orderType" required>
+                        <option value="">请选择</option>
+                        <option value="ORDERED">有序</option>
+                        <option value="UNORDERED">无序</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">  路由类型
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <div class="col-md-7 input-icon right">
+                    <!--<input type="text" name="intervalSeconds" placeholder="" class="form-control" ng-model="formData.routeType" >-->
+                    <select name="" class="form-control" ng-model="formData.routeType" required>
+                        <option value="">请选择</option>
+                        <option value="CONSUME">消费</option>
+                        <option value="NOTIFY">通知</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">MQ Broker标签
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <div class="col-md-7 input-icon right">
+                    <select name="" class="form-control" ng-model="formData.brokerTag" ng-options="x.templateCode as x.templateName for x in region">
+                        <option value="">请选择</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">应用名称
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <div class="col-md-7 input-icon right">
+                    <!--<input type="text" name="codeLength" placeholder="" class="form-control" ng-model="formData.appName" required>-->
+                    <select name="" class="form-control" ng-model="formData.appId" ng-options="x.templateCode as x.templateName for x in appid">
+                        <option value="">请选择</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">  消息主题名称
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <div class="col-md-7 input-icon right">
+                    <input type="text" name="retryTimes" placeholder="" class="form-control" ng-model="formData.topicName" required>
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">脚本校验
+                </label>
+                <div class="col-md-7 input-icon right">
+                    <input type="text" name="platformCode" placeholder="" class="form-control" ng-model="formData.scriptValidtion">
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">  消息主题描述
+                </label>
+                <div class="col-md-7 input-icon right">
+                    <input type="text" name="intervalSeconds" placeholder="" class="form-control" ng-model="formData.topicDesc" >
+                </div>
+            </div>
+        </div>
+
+        <!--==========编辑=========-->
+        <div ng-if="topic1">
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">  消息主题标签
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <div class="col-md-7 input-icon right">
+                    <input type="text" name="dayTimesLimit" placeholder="" class="form-control" ng-model="formData.topicTag" disabled>
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">超时时间
+                    <!--<span class="required" aria-required="true"> * </span>-->
+                </label>
+                <div class="col-md-7 input-icon right">
+                    <input type="text" name="dayTimesLimit" placeholder="" class="form-control" ng-model="formData.timeout" >
+                </div>
+            </div>
+
+
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">最大连投数
+                    <!--<span class="required" aria-required="true"> * </span>-->
+                </label>
+                <div class="col-md-7 input-icon right">
+                    <input type="text" name="codeLength" placeholder="" class="form-control" ng-model="formData.maxTimes" >
+                </div>
+            </div>
+
+
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">  连续投递速率
+                    <!--<span class="required" aria-required="true"> * </span>-->
+                </label>
+                <div class="col-md-7 input-icon right">
+                    <input type="text" name="retryTimes" placeholder="" class="form-control" ng-model="formData.intervalTime" >
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">重发间隔
+                </label>
+                <div class="col-md-7 input-icon right">
+                    <input type="text" name="platformCode" placeholder="" class="form-control" ng-model="formData.cronExpression">
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">  最大生产速度
+                </label>
+                <div class="col-md-7 input-icon right">
+                    <input type="text" name="intervalSeconds" placeholder="" class="form-control" ng-model="formData.maxProduceSpeed" >
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">  最大消费速度
+                </label>
+                <div class="col-md-7 input-icon right">
+                    <input type="text" name="intervalSeconds" placeholder="" class="form-control" ng-model="formData.maxConsumeSpeed" >
+                </div>
+            </div>
+        </div>
+        <div class="err font-red">
+            <span>{{error_description}}</span>
+        </div>
+        <div class="form-group" style=" text-align: center">
+            <button type="submit" class="btn btn-success" ng-click="post(formData)" ng-disabled="form.$invalid">提交</button>
+            <button class="btn" ng-click="cancel()">取消</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,166 @@
+
+<div class="orgnize" ng-controller="messageinfoController">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <span class="caption-subject font-green bold uppercase">消息信息详情</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
+                        <div class="row">
+                            <!--<div class="col-md-12 col-sm-12">-->
+
+                            <!--<div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">-->
+                            <!--<input type="text" class="form-control input-md" ng-model="filterOptions.messagekey" placeholder="消息秘钥">-->
+                            <!--<div class="form-control-focus"> </div>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                        </div>
+                    </div>                <br>
+                    <br/>
+                    <div class="table-scrollable" style="word-wrap: break-word;">
+                        <table class="table table-bordered table-hover table-striped table-condensed flip-content" id="sample_1" role="grid" aria-describedby="sample_1_info">
+                            <thead>
+                            <tr role="row">
+                                <!--<th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="序号"> 序号 </th>-->
+                                <th style="max-width:170px;" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="messageId"> 消息Id </th>
+                                <th class="7" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="messagekey"> 消息key </th>
+                                <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="messageTopic"> 消息主题</th>
+                                <th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="requestType"> 请求类型 </th>
+                                <th class="" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="messageHeader"> 消息头部</th>
+                                <th class="" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="messageSource"> 消息源IP</th>
+                                <th class="" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="MessageStatus"> 消息状态</th>
+                                <th style="max-width:170px;" class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="appId"> 应用名称</th>
+                                <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="详情"> 消息主体</th>
+                                <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="详情"> 消息订阅者</th>
+                                <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="详情"> 重发消息</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="gradeX" role="row" ng-show="tdBlock">
+                                <td style="max-width:170px;" >{{messageId}}</td>
+                                <!--<td>{{$index}}</td>-->
+                                <td>{{messageKey}}</td>
+                                <td>{{messageTopic}}</td>
+                                <td>{{requestType}}</td>
+                                <td>{{messageHeader}}</td>
+                                <td>{{messageSource}}</td>
+                                <td>{{MessageStatus}}</td>
+                                <td style="max-width:170px;" >{{appId}}</td>
+                                <td>
+                                    <a href="javascript:;" ng-click="mesbody()" class="btn blue">
+                                        <i class="iocn  icon-list"></i>  详情
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="javascript:;" ng-click="detail()" class="btn blue">
+                                        <i class="iocn  icon-list"></i>  详情
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="javascript:;" ng-click="resend(messageKey)" class="btn green-meadow">
+                                        <i class=""></i>  确认
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br><br>
+                    <div class="table-scrollable" >
+                        <table class="table table-bordered table-hover table-striped table-condensed flip-content" id="sample_2" role="grid" aria-describedby="sample_1_info">
+                            <thead>
+                            <tr role="row">
+                                <!--<th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="序号"> 序号 </th>-->
+                                <th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="用户ID"> 订阅者ID </th>
+                                <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="响应主体"> 响应主体</th>
+                                <th class="" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="响应状态">响应状态</th>
+                                <th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="时间"> 时间 </th>
+                                <!--<th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="改变状态"> 手动确认成功</th>-->
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="gradeX" role="row" ng-repeat="data in msi" ng-show="twoBlock">
+                                <!--<td>{{$index+1}}</td>-->
+                                <td>{{data.subscriberId}}</td>
+                                <td>{{data.responseBody}}</td>
+                                <td>{{data.responseStatus | responseStatus}}</td>
+                                <td>{{data.date |date:"yyyy/MM/dd HH:mm:ss"}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- ======================================== 弹窗 ==================================== -->
+                    <!-- 消息用户 -->
+                    <div class="modal fade" id="configMsg" tabindex="-1" role="dialog" aria-labelledby="configMsg" aria-hidden="true">
+                        <div class="modal-dialog" style="width:1200px;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">消息用户</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <div class="gridStyle">
+                                            <div class="panel panel-default table-responsive">
+                                                <table class="table table-striped table-bordered">
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="text-center">序号</th>
+                                                        <th class="text-center">用户ID</th>
+                                                        <th class="text-center">用户key</th>
+                                                        <th class="text-center">URL</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr ng-repeat="setData in messageSubscriberJ">
+                                                        <td class="text-center">{{$index+1}}</td>
+                                                        <td class="text-center">{{setData.subscriberId}}</td>
+                                                        <td class="text-center">{{setData.subscriberKey}}</td>
+                                                        <td class="text-center">{{setData.targetURI}}</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <pagenav conf="paginationConf"></pagenav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ==========消息主体========== -->
+                    <div class="modal fade" id="mesbody" tabindex="-1" role="dialog" aria-labelledby="configMsg" aria-hidden="true">
+                        <div class="modal-dialog" style="width:1200px;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">消息主体</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <div class="gridStyle">
+                                            <div class="panel panel-default table-responsive">
+                                                {{messageBody}}
+                                            </div>
+                                            <pagenav conf="paginationConf"></pagenav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding: 20px 0px; text-align: center;font-size: 18px; font-weight: bold; color: #cc9f77;" ng-show="platformAuthMsg">
+                    {{platformAuthMsg}}
+                </div>
+                <div style="padding: 20px 0px; text-align: center;font-size: 18px; font-weight: bold; color: #cc9f77;">{{error_description}}</div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="orgnize" ng-controller="chartPieController">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <span class="caption-subject font-green bold uppercase">Broker饼图</span>
+                    </div>
+                </div>
+                <form class="col-md-10 form-inline " name="form">
+                    <select style="width:300px; margin-bottom: 50px" ng-change="status(address)" ng-model="address.status" class="form-control input-small input-inline " >
+                        <option value="" selected="">请选择数据类型</option>
+                        <option value="TOTAL_NUMBER">所有数据</option>
+                        <option value="SUCCESS_NUMBER">成功数据</option>
+                        <option value="FAILURE_NUMBER">失败数据</option>
+                    </select>
+                </form>
+                <div class="portlet-body" >
+                    <div id="chartPie" style="height: 500px" ng-show="chartShow"></div>
+                </div>
+            </div>
+            <div style="padding: 20px 0px; text-align: center;font-size: 18px; font-weight: bold; color: #cc9f77;" ng-show="platformAuthMsg">
+                {{platformAuthMsg}}
+            </div>
+        </div>
+    </div>
+</div>
