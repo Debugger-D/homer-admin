@@ -26,6 +26,14 @@ angular.module('MetronicApp').factory('messageallAPI', ["$resource","$rootScope"
                 "Cache-Control" : "no-cache"
             },
             url: messageAllURL+"/popup/app"
+        },
+        isAdmin: {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Cache-Control" : "no-cache"
+            },
+            url: messageAllURL+"/power"
         }
     })
 }]);

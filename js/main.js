@@ -325,7 +325,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                     templateUrl: 'views/message/messageall.html'
                 }
             },
-            data: {pageTitle: '所有消息信息'},
+            data: {pageTitle: '消息列表'},
             resolve: {
             }
         })
@@ -350,7 +350,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                     templateUrl: 'views/message/messagelog.html'
                 }
             },
-            data: {pageTitle: '消息日志管理'},
+            data: {pageTitle: '消息追踪'},
             resolve: {
             }
         })
@@ -422,7 +422,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                     templateUrl: 'views/check/checklist.html'
                 }
             },
-            data: {pageTitle: '消息主题审核信息列表'},
+            data: {pageTitle: '主题审核信息列表'},
             resolve: {
             }
         })

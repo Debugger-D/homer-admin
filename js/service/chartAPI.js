@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/9/27.
  */
 angular.module('MetronicApp').factory('chartAPI', ["$resource", function ($resource) {
-    return $resource(chart, {}, {
+    return $resource(messageAllURL, {}, {
         gettest: {
             method: 'GET',
             // isArray: true,
@@ -10,7 +10,7 @@ angular.module('MetronicApp').factory('chartAPI', ["$resource", function ($resou
                 "Content-Type": "application/x-www-form-urlencoded",
                 "Cache-Control" : "no-cache"
             },
-            url: chart
+            url: messageAllURL
         },
         gettopic: {
             method: 'GET',
@@ -19,7 +19,7 @@ angular.module('MetronicApp').factory('chartAPI', ["$resource", function ($resou
                 "Content-Type": "application/x-www-form-urlencoded",
                 "Cache-Control" : "no-cache"
             },
-            url: chart+"/chart/queryChartNodeResult"
+            url: messageAllURL+"/chart/queryChartNodeResult"
         },
         chartdata: {
             method: 'POST',
@@ -28,7 +28,7 @@ angular.module('MetronicApp').factory('chartAPI', ["$resource", function ($resou
                 "Content-Type": "application/json",
                 "Cache-Control" : "no-cache"
             },
-            url: chart+"/chart/chartDisplay"
+            url: messageAllURL+"/chart/chartDisplay"
         },
         getPie: {
             method: 'POST',
@@ -37,7 +37,7 @@ angular.module('MetronicApp').factory('chartAPI', ["$resource", function ($resou
                 "Content-Type": "application/json",
                 "Cache-Control" : "no-cache"
             },
-            url: chart+"/chart/queryBrokerStatistics"
+            url: messageAllURL+"/chart/queryBrokerStatistics"
         }
     })
 }]);
