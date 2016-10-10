@@ -5,6 +5,7 @@ angular.module('MetronicApp').controller('messageallController', ['$scope', '$ro
     function($scope, $rootScope, $timeout ,ModalService, messageallAPI,$state) {
         var modalPath = "views/topic/topicModal.html";
         var count = 0;
+        //获取broker映射
         messageallAPI.getapp({}, function(data) {
             $scope.region = data.infos;
             console.log($scope.region)
@@ -14,6 +15,13 @@ angular.module('MetronicApp').controller('messageallController', ['$scope', '$ro
             }
         }, function(err) {
             toastr.error(err.data.error.description)
+        })
+        //检查权限
+        $scope.isAdmin=false;
+        messageallAPI.isAdmin({},function (data) {
+            if(data.power!='manager'){
+                $scope.isAdmin=true;
+            }
         })
         // 获取
         $scope.getList = function() {

@@ -1,10 +1,17 @@
 /**
  * Created by Administrator on 2016/9/19.
  */
-angular.module('MetronicApp').controller('topicController', ['$scope', '$rootScope', '$timeout', 'ModalService', 'topicAPI','$state',
-    function($scope, $rootScope, $timeout ,ModalService, topicAPI,$state) {
+angular.module('MetronicApp').controller('topicController', ['$scope', '$rootScope', '$timeout', 'ModalService', 'topicAPI','messageallAPI','$state',
+    function($scope, $rootScope, $timeout ,ModalService, topicAPI,messageallAPI,$state) {
         var modalPath = "views/topic/topicModal.html";
         var count = 0;
+        //检查权限
+        $scope.isAdmin=false;
+        messageallAPI.isAdmin({},function (data) {
+            if(data.power!='manager'){
+                $scope.isAdmin=true;
+            }
+        })
         //broker映射
         $scope.transMap = {};
         topicAPI.getregion({}, function(data) {

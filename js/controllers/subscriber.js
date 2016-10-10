@@ -6,6 +6,33 @@ angular.module('MetronicApp').controller('subscriberController', ['$scope', '$ro
         var modalPath = "views/subscriber/subscriberModal.html";
         var topicPath = "views/subscriber/stModal.html";
         var count = 0;
+
+        //broker映射
+        $scope.transMap = {};
+        topicAPI.getregion({}, function(data) {
+            $scope.region = data.infos;
+            console.log($scope.region)
+            for(var i = 0; i < data.infos.length; i++) {
+                var dd = data.infos[i];
+                $scope.transMap[dd.templateCode] = dd.templateName;
+            }
+        }, function(err) {
+            toastr.error(err.data.error.description)
+        });
+
+        //app id 映射
+        $scope.transMap1 = {};
+        topicAPI.getappid({}, function(data) {
+            $scope.appid = data.infos;
+            console.log($scope.appid)
+            for(var i = 0; i < data.infos.length; i++) {
+                var dd = data.infos[i];
+                $scope.transMap1[dd.templateCode] = dd.templateName;
+            }
+        }, function(err) {
+            toastr.error(err.data.error.description)
+        })
+
         // 获取
         if($stateParams.topicTag!=':topicTag'){
             $scope.filterOptions={

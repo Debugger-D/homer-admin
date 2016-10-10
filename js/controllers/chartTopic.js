@@ -11,7 +11,7 @@ angular.module('MetronicApp').controller('chartTopicController', ['$scope', '$mo
         //=======echart通用参数=========
         var　option = {
             title : {
-                text: 'Broker数据图',
+                text: '',
                 subtext: 'www.trc.com 泰然城'
             },
             tooltip : {
@@ -126,6 +126,7 @@ angular.module('MetronicApp').controller('chartTopicController', ['$scope', '$mo
             console.log($scope.filterObj.chartType);
             if($scope.filterObj.chartType=="P1"){
                 $scope.filterObj.period="ONEHOUR";
+                $scope.filterObj.queryTime="";
             }else if($scope.filterObj.chartType=="P2"){
                 $scope.filterObj.period="ONEMINUTE";
             }
