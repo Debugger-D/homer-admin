@@ -8,43 +8,6 @@
                     </div>
                 </div>
                 <div class="portlet-body">
-                    <div style="word-wrap: break-word;width: 40%;float: right;">
-                        <div class="">
-                            <div class="col-md-12" style="padding: 0">
-                                <a href="javascript:;" ng-click="edittopic1(datatopicInfo)" class="btn green-meadow">
-                                   修改
-                                </a>
-                            </div><br>
-                        </div>
-                        <br>
-                        <div class="table-scrollable " >
-                            <table class="table paddingTable table-bordered table-hover table-striped table-condensed flip-content"  role="grid">
-                                <tr>
-                                    <td style="max-width: 200px;padding: 10px;" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="超时时间"> 超时时间 </td>
-                                    <td>{{datatopicInfo.timeout}}</td>
-                                </tr>
-                                <tr>
-                                    <td width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="最大连投数"> 最大连投数</td>                                            <td>{{datatopicInfo.maxTimes}}</td>
-                                </tr>
-                                <tr>
-                                    <td width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="连投率"> 连续投递速率</td>                                             <td>{{datatopicInfo.intervalTime}}</td>
-                                </tr>
-                                <tr>
-                                    <td width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="重发间隔"> 重发间隔</td>
-                                    <td>{{datatopicInfo.cronExpression}}</td>
-                                </tr>
-                                <tr>
-                                    <td width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="最高产速"> 最大生产速度</td>
-                                    <td>{{datatopicInfo.maxProduceSpeed}}</td>
-
-                                </tr>
-                                <tr>
-                                    <td width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="最大消费速度"> 最大消费速度</td>
-                                    <td>{{datatopicInfo.maxConsumeSpeed}}</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
                     <div style="word-wrap: break-word;width: 40%;float: left;">
                         <div class="" >
                             <div class="col-md-12" style="padding: 0">
@@ -66,25 +29,65 @@
                                     <td>{{datatopicInfo.topicName}}</td>
                                 </tr>
                                 <tr>
-                                    <td width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="最高产速"> 路由类型</td>
+                                    <td style="max-width: 200px;padding: 10px;" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="最高产速"> 路由类型</td>
                                     <td>{{list.routeType=="CONSUME"?"消费":"通知"}}</td>
 
                                 </tr>
                                 <tr>
-                                    <td width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="最大连投数"> MQ Broker标签</td>                                            <td>{{datatopicInfo.brokerTag}}</td>
+                                    <td style="max-width: 200px;padding: 10px;" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="最大连投数"> MQ Broker标签</td>                                            <td>{{datatopicInfo.brokerTag}}</td>
                                 </tr>
                                 <tr>
-                                    <td width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="连投率"> 消息主题描述</td>                                             <td>{{datatopicInfo.topicDesc}}</td>
+                                    <td style="max-width: 200px;padding: 10px;" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="连投率"> 消息主题描述</td>                                              <td>{{datatopicInfo.topicDesc}}</td>
                                 </tr>
-
                                 <tr>
-                                    <td width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="最大消费速度"> 脚本校验</td>
+                                    <td style="max-width: 200px;padding: 10px;" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="连投率"> 应用名称	</td>                                              <td>{{datatopicInfo.appName}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="max-width: 200px;padding: 10px;" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="最大消费速度"> 脚本校验</td>
                                     <td>{{datatopicInfo.scriptValidtion}}</td>
                                 </tr>
                             </table>
                         </div>
                     </div>
-                    <br><br>
+                    <div style="word-wrap: break-word;width: 40%;float: left;margin-left: 5%">
+                        <div class="">
+                            <div class="col-md-12" style="padding: 0">
+                                <a href="javascript:;" ng-click="edittopic1(datatopicInfo)" class="btn green-meadow">
+                                   修改
+                                </a>
+                            </div><br>
+                        </div>
+                        <br>
+                        <div class="table-scrollable " >
+                            <table class="table paddingTable table-bordered table-hover table-striped table-condensed flip-content"  role="grid">
+                                <tr>
+                                    <td style="max-width: 200px;padding: 10px;" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="超时时间"> 超时时间 </td>
+                                    <td>{{datatopicInfo.timeout}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="max-width: 200px;padding: 10px;" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="最大连投数"> 最大连投数</td>                                            <td>{{datatopicInfo.maxTimes}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="max-width: 200px;padding: 10px;" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="连投率"> 连续投递速率</td>                                             <td>{{datatopicInfo.intervalTime}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="max-width: 200px;padding: 10px;" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="重发间隔"> 重发条件表达式</td>
+                                    <td>{{datatopicInfo.cronExpression}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="max-width: 200px;padding: 10px;" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="最高产速"> 最大生产速度</td>
+                                    <td>{{datatopicInfo.maxProduceSpeed}}</td>
+
+                                </tr>
+                                <tr>
+                                    <td style="max-width: 200px;padding: 10px;" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="最大消费速度"> 最大消费速度</td>
+                                    <td>{{datatopicInfo.maxConsumeSpeed}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <br><br><br><br><br><br>
                     <div id="sample_1_wrapper" class="dataTables_wrapper no-footer" style="padding-top: 268px">
                         <div class="row">
                             <div class="col-md-12">

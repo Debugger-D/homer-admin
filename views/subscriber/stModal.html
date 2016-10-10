@@ -16,11 +16,11 @@
             </div>
             <div class="form-group col-md-12">
                 <label class="control-label col-md-3">顺序类型
-                    <span class="required" aria-required="true"> * </span>
+                    <!--<span class="required" aria-required="true"> * </span>-->
                 </label>
                 <div class="col-md-7 input-icon right">
                     <!--<input type="text" name="templateCode" placeholder="" class="form-control" ng-model="formData.orderType">-->
-                    <select name="" class="form-control" ng-model="formData.orderType" required>
+                    <select name="" class="form-control" ng-model="formData.orderType">
                         <option value="">请选择</option>
                         <option value="ORDERED">有序</option>
                         <option value="UNORDERED">无序</option>
@@ -30,11 +30,11 @@
 
             <div class="form-group col-md-12">
                 <label class="control-label col-md-3">  路由类型
-                    <span class="required" aria-required="true"> * </span>
+                    <!--<span class="required" aria-required="true"> * </span>-->
                 </label>
                 <div class="col-md-7 input-icon right">
                     <!--<input type="text" name="intervalSeconds" placeholder="" class="form-control" ng-model="formData.routeType" >-->
-                    <select name="" class="form-control" ng-model="formData.routeType" required>
+                    <select name="" class="form-control" ng-model="formData.routeType" >
                         <option value="">请选择</option>
                         <option value="CONSUME">消费</option>
                         <option value="NOTIFY">通知</option>
@@ -45,7 +45,7 @@
 
             <div class="form-group col-md-12">
                 <label class="control-label col-md-3">MQ Broker标签
-                    <span class="required" aria-required="true"> * </span>
+                    <!--<span class="required" aria-required="true"> * </span>-->
                 </label>
                 <div class="col-md-7 input-icon right">
                     <select name="" class="form-control" ng-model="formData.brokerTag" ng-options="x.templateCode as x.templateName for x in region">
@@ -54,24 +54,24 @@
                 </div>
             </div>
 
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-3">应用名称
-                    <span class="required" aria-required="true"> * </span>
-                </label>
-                <div class="col-md-7 input-icon right">
-                    <!--<input type="text" name="codeLength" placeholder="" class="form-control" ng-model="formData.appName" required>-->
-                    <select name="" class="form-control" ng-model="formData.appId" ng-options="x.templateCode as x.templateName for x in appid">
-                        <option value="">请选择</option>
-                    </select>
-                </div>
-            </div>
+            <!--<div class="form-group col-md-12">-->
+                <!--<label class="control-label col-md-3">应用名称-->
+                    <!--&lt;!&ndash;<span class="required" aria-required="true"> * </span>&ndash;&gt;-->
+                <!--</label>-->
+                <!--<div class="col-md-7 input-icon right">-->
+                    <!--&lt;!&ndash;<input type="text" name="codeLength" placeholder="" class="form-control" ng-model="formData.appName" required>&ndash;&gt;-->
+                    <!--<select name="" class="form-control" ng-model="formData.appId" ng-options="x.templateCode as x.templateName for x in appid">-->
+                        <!--<option value="">请选择</option>-->
+                    <!--</select>-->
+                <!--</div>-->
+            <!--</div>-->
 
             <div class="form-group col-md-12">
                 <label class="control-label col-md-3">  消息主题名称
-                    <span class="required" aria-required="true"> * </span>
+                    <!--<span class="required" aria-required="true"> * </span>-->
                 </label>
                 <div class="col-md-7 input-icon right">
-                    <input type="text" name="retryTimes" placeholder="" class="form-control" ng-model="formData.topicName" required>
+                    <input type="text" name="retryTimes" placeholder="" class="form-control" ng-model="formData.topicName">
                 </div>
             </div>
 
@@ -132,7 +132,7 @@
             </div>
 
             <div class="form-group col-md-12">
-                <label class="control-label col-md-3">重发间隔
+                <label class="control-label col-md-3">重发条件表达式
                 </label>
                 <div class="col-md-7 input-icon right">
                     <input type="text" name="platformCode" placeholder="" class="form-control" ng-model="formData.cronExpression">

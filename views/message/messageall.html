@@ -4,7 +4,7 @@
             <div class="portlet light">
                 <div class="portlet-title">
                     <div class="caption">
-                        <span class="caption-subject font-green bold uppercase">所有信息</span>
+                        <span class="caption-subject font-green bold uppercase">消息列表</span>
                     </div>
                 </div>
                 <div class="portlet-body">
@@ -20,7 +20,7 @@
                                     <input type="text" class="form-control input-md" ng-model="filterOptions.topicTag" placeholder="消息主题标签">
                                     <div class="form-control-focus"> </div>
                                 </div>
-                                <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
+                                <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input" ng-show="isAdmin">
                                     <select name="" class="form-control" ng-model="filterOptions.appId" ng-options="x.templateCode as x.templateName for x in region">
                                         <option value="">应用名称</option>
                                     </select>

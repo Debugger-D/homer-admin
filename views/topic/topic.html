@@ -46,7 +46,7 @@
                                     <input type="text" class="form-control input-md" ng-model="filterOptions.topicName" placeholder="消息主题名称">
                                     <div class="form-control-focus"> </div>
                                 </div>
-                                <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
+                                <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input" ng-show="isAdmin">
                                     <!--<input type="text" class="form-control input-md" ng-model="filterOptions.appId" placeholder="应用ID">-->
                                     <select name="" class="form-control" ng-model="filterOptions.appId" ng-options="x.templateCode as x.templateName for x in appid">
                                         <option value="">应用名称</option>
