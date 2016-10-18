@@ -53,23 +53,6 @@ angular.module('MetronicApp').controller('mqBrokerController', ['$scope', '$root
                 }else{$scope.platformAuthMsg = '查不到数据';}
             });
         }
-        // 根据用户输入实时查询平台
-       /* var timeout;
-        $scope.$watch('filterOptions', function(newVal, oldVal) {
-            $scope.platformAuthMsg = "";
-            $scope.dataInfo = [];
-            $scope.totalItems = 0;
-            if (newVal !== oldVal) {
-                if (timeout) $timeout.cancel(timeout);
-                timeout = $timeout(function() {
-                    $scope.getList();
-                }, 500);
-            }
-        }, true);
-
-        $scope.pageChanged = function() {
-            $scope.getList();
-        }*/
 
         // =====新增=======
         $scope.add = function() {

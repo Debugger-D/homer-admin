@@ -11,7 +11,7 @@
                     <div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
                         <div class="row">
                             <div class="col-md-12">
-                                <a href="javascript:;" ng-click="resend(messageKey)" class="btn green-meadow">
+                                <a href="javascript:;" ng-click="resend(messageKey)" class="btn green-meadow" ng-show="resendBlock">
                                     重发消息
                                 </a>
                             </div>
@@ -56,6 +56,10 @@
                             <tr class="gradeX" role="row">
                                 <td width="" class="tdbold" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="详情"> 消息主体</td>
                                 <td style="max-width:570px;">{{messageBody}}</td>
+                            </tr>
+                            <tr class="gradeX" role="row">
+                                <td width="" class="tdbold" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="详情"> 创建时间</td>
+                                <td style="max-width:570px;">{{messageTime |date:"yyyy/MM/dd HH:mm:ss"}}</td>
                             </tr>
                         </table>
                     </div>

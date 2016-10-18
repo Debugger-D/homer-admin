@@ -18,7 +18,7 @@ var adminUrl = '/admin/admin/';
 
 //============消息总线2.0===============
   //===MQ Broker管理===
-var messageAllURL='/homer';
+var messageAllURL='/homer-admin';
 
 
 //=======流程图======
@@ -301,7 +301,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                     templateUrl: 'views/mqBroker/mqBroker.html'
                 }
             },
-            data: {pageTitle: 'mqBroker管理'},
+            data: {pageTitle: 'MQ Broker管理'},
             resolve: {
             }
         })
@@ -459,6 +459,18 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                 }
             },
             data: {pageTitle: 'Broker饼图'},
+            resolve: {
+            }
+        })
+        //系统参数管理
+        .state('main.parameter', {
+            url: "/parameter",
+            views: {
+                'mainview@main': {
+                    templateUrl: 'views/parameter/parameter.html'
+                }
+            },
+            data: {pageTitle: '系统参数管理'},
             resolve: {
             }
         })

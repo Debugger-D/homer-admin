@@ -33,12 +33,10 @@
     </form>
     <form role="form" name="form" ng-if="messageEdit">
 
-        <div class="form-group col-md-12" ng-repeat="k in formData">
-            <!--<label class="control-label col-md-3">IP地址-->
-                <!--&lt;!&ndash;<span class="required" aria-required="true"> * </span>&ndash;&gt;-->
-            <!--</label>-->
+
+        <div class="form-group col-md-12" ng-repeat="k in formData.ip track by $index">
             <div class="col-md-7 input-icon right">
-                <input type="text" name="brokerName" placeholder="" class="form-control" ng-model="formData2[$index]">
+                <input type="text" name="brokerName" placeholder="" class="form-control" ng-model="formData2.ip[$index]">
             </div>
             <div lass="control-label col-md-2">
                 <a href="javascript:;" class="btn blue" ng-click="deletIP($index)">

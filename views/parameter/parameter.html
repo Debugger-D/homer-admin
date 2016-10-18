@@ -1,0 +1,81 @@
+<div class="orgnize" ng-controller="parameterController">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <span class="caption-subject font-green bold uppercase">系统参数管理</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="javascript:;" ng-click="add()" class="btn green-meadow">
+                                    <i class="fa fa-plus"></i> 添加
+                                </a>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                            <page-per-counter class="form-group col-md-3"></page-per-counter>
+                            <div  class="col-md-1 col-sm-12"></div>
+                        </div>
+                            <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
+                                <input type="text" class="form-control input-md" ng-model="filterOptions.paramCode" placeholder="参数编号">
+                                <div class="form-control-focus"> </div>
+                            </div>
+                            <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
+                                <input type="text" class="form-control input-md" ng-model="filterOptions.paramName" placeholder="参数名称">
+                                <div class="form-control-focus"> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-scrollable">
+                        <table class="table table-bordered table-hover table-striped table-condensed flip-content" id="sample_1" role="grid" aria-describedby="sample_1_info">
+                            <thead>
+                            <tr role="row">
+                                <!--<th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="序号"> 序号 </th>-->
+                                <th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="参数编号">参数编号 </th>
+                                <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="参数名称">参数名称</th>
+                                <th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="参数值">参数值</th>
+                                <th class="" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="参数说明"> 参数说明</th>
+                                <th width="20%" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="操作"> 操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="gradeX" role="row" ng-repeat="list in dataInfo">
+                                <!--<td>{{$index+1}}</td>-->
+                                <td>{{list.paramCode}}</td>
+                                <td>{{list.paramName}}</td>
+                                <!--<td>{{transMap[list.region]||list.region}}</td>-->
+                                <td>{{list.paramValue}}</td>
+                                <td>{{list.remark}}</td>
+                                <td>
+                                    <a href="javascript:;" ng-click="edit(list)" class="btn blue">
+                                        <i class="fa fa-edit"></i>  修改
+                                    </a>
+                                    <a  href="javascript:;" ng-click="delet(list.paramCode)" class="btn red-intense">
+                                        <i class="fa fa-trash"></i> 删除
+                                    </a>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="padding: 20px 0px; text-align: center;font-size: 18px; font-weight: bold; color: #cc9f77;" ng-show="platformAuthMsg">
+                        {{platformAuthMsg}}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 text-center">
+                            <uib-pagination ng-change="pageChanged()" boundary-links="true" total-items="totalItems" items-per-page="pageCount" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" max-size="10"></uib-pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

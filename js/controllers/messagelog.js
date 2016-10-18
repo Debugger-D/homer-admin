@@ -5,6 +5,23 @@ angular.module('MetronicApp').controller('messagelogController', ['$scope', '$ro
     function($scope, $rootScope, $timeout ,ModalService,messagelogAPI) {
         //var modalPath = "views/mqBroker/mqBrokerModal.html";
         var count = 0;
+        $scope.filterOptions={}
+        $scope.keyBlock=false;
+        $scope.idBlock=true;
+        $scope.selecttype=function () {
+            console.log($scope.selectwhat)
+            if($scope.selectwhat=='id'){
+                $scope.filterOptions.messageKey='';
+                $scope.filterOptions.messageId='';
+                $scope.idBlock=true;
+                $scope.keyBlock=false;
+            }else{
+                $scope.filterOptions.messageKey='';
+                $scope.filterOptions.messageId='';
+                $scope.idBlock=false;
+                $scope.keyBlock=true;
+            }
+        }
 
         // 获取
         $scope.messageTrace=false;
@@ -14,15 +31,18 @@ angular.module('MetronicApp').controller('messagelogController', ['$scope', '$ro
             //数据
             messagelogAPI.getmessagelog(filterObj, function(data) {
                 if(data.length < 1 ) {
+                    $scope.databeside=false;
                     $scope.platformAuthMsg=true;
                     $scope.dataInfo = [];
                     // $scope.totalItems = 0;
                     $scope.platformAuthMsg = '暂无数据';
                 } else {
+                    $scope.databeside=true;
                     $scope.msi=data;
                 }
                 count = 0;
             }, function(err) {
+                $scope.databeside=false;
                 $scope.error_description&&($scope.error_description = err.data.error.description);
                 if(err.status == 403) {
                     $scope.platformAuthMsg = '您无权查看';
@@ -55,40 +75,62 @@ angular.module('MetronicApp').controller('messagelogController', ['$scope', '$ro
                 }
                 $scope.timepoint=Math.ceil(timeL/10);
                 //根据返回数据量显示不同图
+                var timeL= $scope.timepoint*10
                 if(makeData[1]){
                     $scope.time1=makeData[1].logTime;
                     $scope.chart1=true;
-                    $scope.timeL1=makeData[1].logTime/timeL*100-0.1
+                    $scope.timeL1=makeData[1].logTime/timeL*100;
+                    if($scope.timeL1>40){
+                        $scope.timeL1-=1;
+                    }
                 };
                 if(makeData[2]){
                     $scope.time2=makeData[2].logTime;
                     $scope.chart2=true;
-                    $scope.timeL2=makeData[2].logTime/timeL*100-0.1
+                    $scope.timeL2=makeData[2].logTime/timeL*100
+                    if($scope.timeL2>40){
+                        $scope.timeL2-=1;
+                    }
 
                 };
                 if(makeData[3]){
                     $scope.time3=makeData[3].logTime;
                     $scope.chart3=true;
-                    $scope.timeL3=makeData[3].logTime/timeL*100-0.1
+                    $scope.timeL3=makeData[3].logTime/timeL*100
+                    if($scope.timeL3>40){
+                        $scope.timeL3-=1;
+                    }
                 };
                 if(makeData[4]){
                     $scope.time4=makeData[4].logTime;
                     $scope.chart4=true;
-                    $scope.timeL4=makeData[4].logTime/timeL*100-0.1
+                    $scope.timeL4=makeData[4].logTime/timeL*100
+                    if($scope.timeL4>40){
+                        $scope.timeL4-=1;
+                    }
                 };
                 if(makeData[5]){
                     $scope.time5=makeData[5].logTime;
                     $scope.chart5=true;
-                    $scope.timeL5=makeData[5].logTime/timeL*100-0.1
+                    $scope.timeL5=makeData[5].logTime/timeL*100
+                    if($scope.timeL5>40){
+                        $scope.timeL5-=1;
+                    }
                 };
                 if(makeData[6]){
                     $scope.time6=makeData[6].logTime;
                     $scope.chart6=true;
-                    $scope.timeL6=makeData[6].logTime/timeL*100-0.1
+                    $scope.timeL6=makeData[6].logTime/timeL*100
+                    if($scope.timeL6>40){
+                        $scope.timeL6-=1;
+                    }
                 };
                 if(makeData[7]){
                     $scope.time7=makeData[7].logTime;
-                    $scope.chart7=true;$scope.timeL7=makeData[7].logTime/timeL*100-0.1
+                    $scope.chart7=true;$scope.timeL7=makeData[7].logTime/timeL*100
+                    if($scope.timeL7>40){
+                        $scope.timeL7-=1;
+                    }
                 };
             }, function(err) {
                 if(err.status == 403) {

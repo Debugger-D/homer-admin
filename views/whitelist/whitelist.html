@@ -11,6 +11,10 @@
                     <div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
                         <div class="row">
                             <div class="col-md-12 col-sm-12">
+                                <page-per-counter class="form-group col-md-3"></page-per-counter>
+                                <div  class="col-md-1 col-sm-12"></div>
+                            </div>
+                            <div class="col-md-12 col-sm-12">
                                 <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
                                     <input type="text" class="form-control input-md" ng-model="filterOptions.topicTag" placeholder="消息主题标签">
                                     <div class="form-control-focus"> </div>
@@ -30,15 +34,15 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="gradeX" role="row" ng-show="trBlock">
+                                <tr class="gradeX" role="row" ng-show="trBlock" ng-repeat="list in dataInfo">
                                     <!--<td>{{$index+1}}</td>-->
-                                    <td>{{dataInfo.topicTag}}</td>
-                                    <td>{{dataInfo.ip}}</td>
+                                    <td>{{list.topicTag}}</td>
+                                    <td>{{list.ip}}</td>
                                     <td>
-                                        <a href="javascript:;" ng-click="edit(dataInfo.ip)" class="btn blue">
+                                        <a href="javascript:;" ng-click="edit(list)" class="btn blue">
                                             <i class="fa fa-edit"></i>  修改
                                         </a>
-                                        <a href="javascript:;" ng-click="add(dataInfo.topicTag)" class="btn green-meadow">
+                                        <a href="javascript:;" ng-click="add(list.topicTag)" class="btn green-meadow">
                                             <i class="fa fa-plus"></i> 添加
                                         </a>
                                     </td>

@@ -17,12 +17,40 @@
                             </div>
                             <div class="col-md-12 col-sm-12">
                                 <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
+                                    <select name="" class="form-control" ng-model="selectwhat" ng-change="selecttype()">
+                                        <option  value="id" ng-selected="true">消息ID</option>
+                                        <option  value="key">消息单号</option>
+                                    </select>
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                                <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input" ng-show="idBlock">
+                                    <input type="text" class="form-control input-md" ng-model="filterOptions.messageId" placeholder="消息ID">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                                <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input" ng-show="keyBlock">
+                                    <input type="text" class="form-control input-md" ng-model="filterOptions.messageKey" placeholder="消息单号">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                                <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
                                     <input type="text" class="form-control input-md" ng-model="filterOptions.topicTag" placeholder="消息主题标签">
                                     <div class="form-control-focus"> </div>
                                 </div>
                                 <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input" ng-show="isAdmin">
                                     <select name="" class="form-control" ng-model="filterOptions.appId" ng-options="x.templateCode as x.templateName for x in region">
                                         <option value="">应用名称</option>
+                                    </select>
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                                <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input" >
+                                    <select name="" class="form-control" ng-model="filterOptions.messageStatus">
+                                        <option value="" selected>消息状态</option>
+                                        <option value="ENQUEUE">收到</option>
+                                        <option value="ACCEPTED">已受理</option>
+                                        <option value="WAITING">待受理</option>
+                                        <option value="PROCESSING">处理中</option>
+                                        <option value="FINISH_SUCCESS">成功</option>
+                                        <option value="FINISH_FAILED">失败</option>
+                                        <option value="FINISH_ERROR">错误</option>
                                     </select>
                                     <div class="form-control-focus"> </div>
                                 </div>
@@ -33,10 +61,12 @@
                                 <thead>
                                 <tr role="row">
                                     <!--<th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="序号"> 序号 </th>-->
+                                    <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="消息Id"> 消息Id </th>
                                     <th style="max-width:70px;" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="应用ID"> 消息单号</th>
                                     <th style="max-width:70px;" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="消息主题"> 消息主题</th>
                                     <th class="" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="消息状态"> 消息状态 </th>
                                     <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="topic名称"> 应用名称 </th>
+                                    <th width="" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="topic名称"> 创建日期 </th>
                                     <!--<th style="max-width:70px;" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="消息ID"> 消息ID</th>-->
                                     <th width="20%" class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="操作"> 详情</th>
                                 </tr>
@@ -44,11 +74,12 @@
                                 <tbody>
                                 <tr class="gradeX" role="row" ng-repeat="list in dataInfo">
                                     <!--<td>{{$index+1}}</td>-->
+                                    <td>{{list.messageId}}</td>
                                     <td>{{list.messageKey}}</td>
                                     <td>{{list.messageTopic}}</td>
                                     <td >{{list.messageStatus | messageStatus}}</td>
                                     <td style="min-width: 150px">{{list.appName}}</td>
-                                    <!--<td>{{list.messageId}}</td>-->
+                                    <td>{{list.messageTime |date:"yyyy/MM/dd HH:mm:ss"}}</td>
                                     <td>
                                         <a  href="javascript:;" class="btn green" ui-sref="main.messageinfo({'messagekey':list.messageKey})">
                                             <i class="icon icon-list"></i> 消息详情

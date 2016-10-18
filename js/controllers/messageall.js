@@ -6,6 +6,22 @@ angular.module('MetronicApp').controller('messageallController', ['$scope', '$ro
         var modalPath = "views/topic/topicModal.html";
         var count = 0;
         //获取broker映射
+        $scope.filterOptions={}
+        $scope.keyBlock=false;
+        $scope.idBlock=true;
+        $scope.selecttype=function () {
+            console.log($scope.selectwhat)
+            if($scope.selectwhat=='id'){
+                $scope.filterOptions.messageKey='';
+                $scope.idBlock=true;
+                $scope.keyBlock=false;
+            }else{
+                $scope.filterOptions.messageId='';
+                $scope.idBlock=false;
+                $scope.keyBlock=true;
+            }
+        }
+
         messageallAPI.getapp({}, function(data) {
             $scope.region = data.infos;
             console.log($scope.region)

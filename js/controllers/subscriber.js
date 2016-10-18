@@ -185,7 +185,8 @@ angular.module('MetronicApp').controller('subscriberController', ['$scope', '$ro
             ModalService.open($scope, modalPath, function(scope) {
                 scope.formData={};
                 scope.title = "编辑";
-                scope.formData.topicTag = $scope.dataInfo[0].topicTag;
+                console.log($scope.datatopicInfo.topicTag)
+                scope.formData.topicTag = $scope.datatopicInfo.topicTag;
                 console.log($scope.dataInfo)
                 console.log(scope.formData)
                 scope.httpDisable = true;

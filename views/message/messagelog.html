@@ -11,8 +11,23 @@
                     <div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
                         <div class="row">
                             <div class="col-md-12 col-sm-12">
+                                <!--<div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">-->
+                                    <!--<input type="text" class="form-control input-md" ng-model="filterOptions.messagekey" placeholder="消息单号">-->
+                                    <!--<div class="form-control-focus"> </div>-->
+                                <!--</div>-->
                                 <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input">
-                                    <input type="text" class="form-control input-md" ng-model="filterOptions.messagekey" placeholder="消息单号">
+                                    <select name="" class="form-control" ng-model="selectwhat" ng-change="selecttype()">
+                                        <option  value="id" ng-selected="true">消息ID</option>
+                                        <option  value="key">消息单号</option>
+                                    </select>
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                                <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input" ng-show="idBlock">
+                                    <input type="text" class="form-control input-md" ng-model="filterOptions.messageId" placeholder="消息ID">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                                <div style="padding-top: 0px;margin: 0px;" class="form-group col-md-2 form-md-line-input" ng-show="keyBlock">
+                                    <input type="text" class="form-control input-md" ng-model="filterOptions.messageKey" placeholder="消息单号">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -139,11 +154,6 @@
                                 <div style="width: 0%; border-right: 0px solid #FF676D; position: relative;"class="floatL " >
                                     <div style="" class="chartStatus">{{endStatus}}</div>
                                 </div>
-                                <!--<div style=";"class="floatL chartBody-item">-->
-                                <!--&lt;!&ndash;<div style="margin-top:310px; background: #90EE7D;" class="chartBodytime">&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div style="">50</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--</div>-->
                             </div>
                         </div>
                     </div>
@@ -152,8 +162,6 @@
                         <table class="table table-bordered table-hover table-striped table-condensed flip-content" id="sample_2" role="grid" aria-describedby="sample_1_info">
                             <thead>
                             <tr role="row">
-                                <!--<th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="序号"> 序号 </th>-->
-                                <!--<th class="" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="消息ID">消息ID</th>-->
                                 <th class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="日志信息"> 日志信息</th>
                                 <th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="日志类型"> 日志类型 </th>
                                 <th class="" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="日志时间">日志时间</th>
@@ -161,12 +169,10 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="gradeX" role="row" ng-repeat="data in msi">
-                                <!--<td>{{$index+1}}</td>-->
-                                <!--<td>{{data.messageId}}</td>-->
+                            <tr class="gradeX" role="row" ng-repeat="data in msi" ng-show="databeside">
                                 <td>{{data.logInfo}}</td>
                                 <td>{{data.logType | logType}}</td>
-                                <td>{{data.logTime |date:"yyyy/MM/dd HH:mm:ss"}}</td>
+                                <td>{{data.logTime |date:"yyyy/MM/dd HH:mm:ss:sss"}}</td>
                                 <td>
                                     <a href="javascript:;" ng-click="detail(data.logContent)" class="btn blue">
                                          内容

@@ -10,7 +10,8 @@ angular.module('MetronicApp').factory('messagelogAPI', ["$resource","$rootScope"
                 "Content-Type": "application/x-www-form-urlencoded",
                 "Cache-Control" : "no-cache"
             },
-            url: messageAllURL+"/messagelog/:messagekey"
+            // url: messageAllURL+"/messagelog/:messagekey"
+            url: messageAllURL+"/messagelog"
         },
         getmessagetime: {
             method: 'GET',
@@ -19,7 +20,8 @@ angular.module('MetronicApp').factory('messagelogAPI', ["$resource","$rootScope"
                 "Content-Type": "application/x-www-form-urlencoded",
                 "Cache-Control" : "no-cache"
             },
-            url: messageAllURL+"/messagelog/time/:messagekey"
+            // url: messageAllURL+"/messagelog/time/:messagekey"
+            url: messageAllURL+"/messagelog/time"
         }
     })
 }]);

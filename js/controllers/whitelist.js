@@ -12,7 +12,7 @@ angular.module('MetronicApp').controller('whitelistController', ['$scope', '$roo
          })*/
         // 获取
         $scope.getList = function() {
-            var filterObj = $.extend({},$scope.filterOptions);
+            var filterObj = $.extend({},{pageIndex: $scope.currentPage, pageSize: $scope.pageCount},$scope.filterOptions);
             console.log(filterObj)
             whitelistAPI.get(filterObj, function(data) {
                 $scope.dataInfo = [];
@@ -22,7 +22,7 @@ angular.module('MetronicApp').controller('whitelistController', ['$scope', '$roo
                     $scope.platformAuthMsg = '暂无数据';
                 } else {
                     $scope.trBlock=true;
-                    $scope.dataInfo = data;
+                    $scope.dataInfo = data.infos;
                     $scope.totalItems = data.totalData;
                     $scope.platformAuthMsg = "";
                 }
@@ -57,6 +57,7 @@ angular.module('MetronicApp').controller('whitelistController', ['$scope', '$roo
         // 新增
         $scope.formData={};
         $scope.add = function(data) {
+            $scope.formData.ip=[];
             console.log(data);
             $scope.messageAdd=true;
             $scope.messageEdit=false;
@@ -110,14 +111,14 @@ angular.module('MetronicApp').controller('whitelistController', ['$scope', '$roo
                 scope.httpDisable = true;
 
                 scope.deletIP = function(index) {
-                    scope.formData.splice(index,1);
-                    scope.formData2.splice(index,1);
+                    scope.formData.ip.splice(index,1);
+                    scope.formData2.ip.splice(index,1);
                 }
             }, function(newData) {
                 console.log(newData)
-                newData=newData.join('|');
-                console.log({ip:newData,topicTag:$scope.dataInfo.topicTag})
-                whitelistAPI.edit(JSON.stringify({ip:newData,topicTag:$scope.dataInfo.topicTag}), function(data) {
+                newData=newData.ip.join('|');
+                console.log({ip:newData,topicTag:data.topicTag})
+                whitelistAPI.edit(JSON.stringify({ip:newData,topicTag:data.topicTag}), function(data) {
                     $scope.getList();
                     ModalService.close();
                 }, function(err) {
@@ -137,7 +138,9 @@ angular.module('MetronicApp').controller('whitelistController', ['$scope', '$roo
             });
         }
 
-
+        $scope.pageChanged = function() {
+            $scope.getList();
+        };
         // 首次加载数据
-        // $scope.getList();
+        $scope.getList();
     }]);

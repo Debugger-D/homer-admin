@@ -54,17 +54,6 @@
                 </div>
             </div>
 
-            <!--<div class="form-group col-md-12">-->
-                <!--<label class="control-label col-md-3">应用名称-->
-                    <!--&lt;!&ndash;<span class="required" aria-required="true"> * </span>&ndash;&gt;-->
-                <!--</label>-->
-                <!--<div class="col-md-7 input-icon right">-->
-                    <!--&lt;!&ndash;<input type="text" name="codeLength" placeholder="" class="form-control" ng-model="formData.appName" required>&ndash;&gt;-->
-                    <!--<select name="" class="form-control" ng-model="formData.appId" ng-options="x.templateCode as x.templateName for x in appid">-->
-                        <!--<option value="">请选择</option>-->
-                    <!--</select>-->
-                <!--</div>-->
-            <!--</div>-->
 
             <div class="form-group col-md-12">
                 <label class="control-label col-md-3">  消息主题名称
@@ -103,27 +92,42 @@
                 </div>
             </div>
             <div class="form-group col-md-12">
-                <label class="control-label col-md-3">超时时间
+                <label class="control-label col-md-3">超时时间/ms
                     <!--<span class="required" aria-required="true"> * </span>-->
                 </label>
                 <div class="col-md-7 input-icon right">
-                    <input type="text" name="dayTimesLimit" placeholder="" class="form-control" ng-model="formData.timeout" >
+                    <!--<input type="text" name="dayTimesLimit" placeholder="" class="form-control" ng-model="formData.timeout" >-->
+                    <select name="" class="form-control" ng-model="formData.timeout">
+                        <!--<option value="">请选择</option>-->
+                        <option value="3000">3000ms</option>
+                        <option value="4000">4000ms</option>
+                        <option value="5000">5000ms</option>
+                    </select>
                 </div>
             </div>
 
 
             <div class="form-group col-md-12">
-                <label class="control-label col-md-3">最大连投数
+                <label class="control-label col-md-3">最大连续投递次数
                     <!--<span class="required" aria-required="true"> * </span>-->
                 </label>
                 <div class="col-md-7 input-icon right">
-                    <input type="text" name="codeLength" placeholder="" class="form-control" ng-model="formData.maxTimes" >
+                    <!--<input type="text" name="codeLength" placeholder="" class="form-control" ng-model="formData.maxTimes" >-->
+                    <select name="" class="form-control" ng-model="formData.maxTimes">
+                        <!--<option value="">请选择</option>-->
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
                 </div>
             </div>
 
 
             <div class="form-group col-md-12">
-                <label class="control-label col-md-3">  连续投递速率
+                <label class="control-label col-md-3">  投递间隔/s
                     <!--<span class="required" aria-required="true"> * </span>-->
                 </label>
                 <div class="col-md-7 input-icon right">
@@ -132,7 +136,7 @@
             </div>
 
             <div class="form-group col-md-12">
-                <label class="control-label col-md-3">重发条件表达式
+                <label class="control-label col-md-3">超时策略
                 </label>
                 <div class="col-md-7 input-icon right">
                     <input type="text" name="platformCode" placeholder="" class="form-control" ng-model="formData.cronExpression">

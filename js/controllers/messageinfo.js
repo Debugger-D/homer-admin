@@ -35,11 +35,15 @@ angular.module('MetronicApp').controller('messageinfoController', ['$scope', '$r
                     $scope.messageSource=data.messageSource;
                     $scope.messageBody=data.messageBody;
                     $scope.messageSubscriber=data.messageSubscriber;
+                    $scope.messageTime=data.messageTime;
                     // $scope.messageSubscriberJ=JSON.parse(data.messageSubscriber);
                 }
                 count = 0;
                 messageinfoAPI.getmessagestatus(filterObj, function(data) {
                     $scope.MessageStatus=data.MessageStatus;
+                    if(data.MessageStatus!="成功"){
+                        $scope.resendBlock=true;
+                    }
                     count = 0;
                     messageinfoAPI.getmessageresinfo(filterObj, function(data) {
                         // $scope.twoBlock=true;

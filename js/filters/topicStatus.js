@@ -33,7 +33,7 @@ angular.module('MetronicApp').filter('filterStatus', [function () {
             "WAITING": "等待",
             "PROCESSING": "处理中",
             "FINISH_SUCCESS": "成功",
-            "ACCEPTED": "失败",
+            "FINISH_FAILED": "失败",
             "FINISH_ERROR": "错误"
         }[input]
     }
