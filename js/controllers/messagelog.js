@@ -34,6 +34,7 @@ angular.module('MetronicApp').controller('messagelogController', ['$scope', '$ro
                     $scope.databeside=false;
                     $scope.platformAuthMsg=true;
                     $scope.dataInfo = [];
+                    $scope.messageTrace=false;
                     // $scope.totalItems = 0;
                     $scope.platformAuthMsg = '暂无数据';
                 } else {
@@ -61,78 +62,85 @@ angular.module('MetronicApp').controller('messagelogController', ['$scope', '$ro
             var filterObj = $.extend( {},$scope.filterOptions);
             //流程图
             messagelogAPI.getmessagetime(filterObj, function(makeData) {
-                $scope.messageTrace=true;
-                var timeL=0;
-                var length=makeData.length
-               // console.log(makeData.length)
-                //console.log(makeData[length])
-                $scope.endStatus=makeData[length-1].logType;
-                console.log($scope.endStatus)
-                //拿到总时间
-                for(var i=1;i< length;i++){
-                    timeL+=makeData[i].logTime;
-                    console.log(timeL)
-                }
-                $scope.timepoint=Math.ceil(timeL/10);
-                //根据返回数据量显示不同图
-                var timeL= $scope.timepoint*10
-                if(makeData[1]){
-                    $scope.time1=makeData[1].logTime;
-                    $scope.chart1=true;
-                    $scope.timeL1=makeData[1].logTime/timeL*100;
-                    if($scope.timeL1>40){
-                        $scope.timeL1-=1;
+                if(makeData.length < 1 ) {
+                    $scope.messageTrace=false;
+                    // $scope.totalItems = 0;
+                } else {
+                    $scope.messageTrace=true;
+                    var timeL=0;
+                    var length=makeData.length
+                    // console.log(makeData.length)
+                    //console.log(makeData[length])
+                    $scope.endStatus=makeData[length-1].logType;
+                    console.log($scope.endStatus)
+                    //拿到总时间
+                    for(var i=1;i< length;i++){
+                        timeL+=makeData[i].logTime;
+                        console.log(timeL)
                     }
-                };
-                if(makeData[2]){
-                    $scope.time2=makeData[2].logTime;
-                    $scope.chart2=true;
-                    $scope.timeL2=makeData[2].logTime/timeL*100
-                    if($scope.timeL2>40){
-                        $scope.timeL2-=1;
-                    }
+                    $scope.timepoint=Math.ceil(timeL/10);
+                    //根据返回数据量显示不同图
+                    var timeL= $scope.timepoint*10
+                    if(makeData[1]){
+                        $scope.time1=makeData[1].logTime;
+                        $scope.chart1=true;
+                        $scope.timeL1=makeData[1].logTime/timeL*100;
+                        if($scope.timeL1>40){
+                            $scope.timeL1-=1;
+                        }
+                    };
+                    if(makeData[2]){
+                        $scope.time2=makeData[2].logTime;
+                        $scope.chart2=true;
+                        $scope.timeL2=makeData[2].logTime/timeL*100
+                        if($scope.timeL2>40){
+                            $scope.timeL2-=1;
+                        }
 
-                };
-                if(makeData[3]){
-                    $scope.time3=makeData[3].logTime;
-                    $scope.chart3=true;
-                    $scope.timeL3=makeData[3].logTime/timeL*100
-                    if($scope.timeL3>40){
-                        $scope.timeL3-=1;
-                    }
-                };
-                if(makeData[4]){
-                    $scope.time4=makeData[4].logTime;
-                    $scope.chart4=true;
-                    $scope.timeL4=makeData[4].logTime/timeL*100
-                    if($scope.timeL4>40){
-                        $scope.timeL4-=1;
-                    }
-                };
-                if(makeData[5]){
-                    $scope.time5=makeData[5].logTime;
-                    $scope.chart5=true;
-                    $scope.timeL5=makeData[5].logTime/timeL*100
-                    if($scope.timeL5>40){
-                        $scope.timeL5-=1;
-                    }
-                };
-                if(makeData[6]){
-                    $scope.time6=makeData[6].logTime;
-                    $scope.chart6=true;
-                    $scope.timeL6=makeData[6].logTime/timeL*100
-                    if($scope.timeL6>40){
-                        $scope.timeL6-=1;
-                    }
-                };
-                if(makeData[7]){
-                    $scope.time7=makeData[7].logTime;
-                    $scope.chart7=true;$scope.timeL7=makeData[7].logTime/timeL*100
-                    if($scope.timeL7>40){
-                        $scope.timeL7-=1;
-                    }
-                };
+                    };
+                    if(makeData[3]){
+                        $scope.time3=makeData[3].logTime;
+                        $scope.chart3=true;
+                        $scope.timeL3=makeData[3].logTime/timeL*100
+                        if($scope.timeL3>40){
+                            $scope.timeL3-=1;
+                        }
+                    };
+                    if(makeData[4]){
+                        $scope.time4=makeData[4].logTime;
+                        $scope.chart4=true;
+                        $scope.timeL4=makeData[4].logTime/timeL*100
+                        if($scope.timeL4>40){
+                            $scope.timeL4-=1;
+                        }
+                    };
+                    if(makeData[5]){
+                        $scope.time5=makeData[5].logTime;
+                        $scope.chart5=true;
+                        $scope.timeL5=makeData[5].logTime/timeL*100
+                        if($scope.timeL5>40){
+                            $scope.timeL5-=1;
+                        }
+                    };
+                    if(makeData[6]){
+                        $scope.time6=makeData[6].logTime;
+                        $scope.chart6=true;
+                        $scope.timeL6=makeData[6].logTime/timeL*100
+                        if($scope.timeL6>40){
+                            $scope.timeL6-=1;
+                        }
+                    };
+                    if(makeData[7]){
+                        $scope.time7=makeData[7].logTime;
+                        $scope.chart7=true;$scope.timeL7=makeData[7].logTime/timeL*100
+                        if($scope.timeL7>40){
+                            $scope.timeL7-=1;
+                        }
+                    };
+                }
+
             }, function(err) {
+                $scope.messageTrace=false;
                 if(err.status == 403) {
                     $scope.platformAuthMsg = '您无权查看';
                 }

@@ -33,7 +33,7 @@
                                     <select style="width:300px;" ng-model="filterOptions.topicStatus" class="form-control input-small input-inline" required>
                                         <option value="" selected>请选择主题状态</option>
                                         <option value="PENDING">审核中</option>
-                                        <option value="NOPASS">不通过</option>
+                                        <option value="NOPASS">未通过</option>
                                         <option value="START">启用</option>
                                         <option value="STOP">禁用</option>
                                     </select>
@@ -85,13 +85,13 @@
                                     <td style="">{{list.topicTag}}</td>
                                     <td>{{list.topicName}}</td>
                                     <td ng-if="list.topicStatus=='PENDING'||list.topicStatus=='NOPASS'">
-                                        {{list.topicStatus}}
+                                        {{list.topicStatus | filterStatus}}
                                     </td>
                                     <td ng-if="list.topicStatus==''">
                                         数据异常
                                     </td>
                                     <td ng-if="list.topicStatus=='START'||list.topicStatus=='STOP'">
-                                        <select name="" class="form-control" ng-model="list.topicStatus" ng-change="change(list.topicTag)">
+                                        <select name="" class="form-control " style="width: 90px;margin: 0 auto;" ng-model="list.topicStatus" ng-change="change(list.topicTag)">
                                             <option value="START">启用</option>
                                             <option value="STOP">禁用</option>
                                         </select>

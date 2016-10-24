@@ -4,12 +4,24 @@
 
 <div class="modal-body">
     <form role="form" name="form">
-        <div class="form-group col-md-12">
-            <label class="control-label col-md-3">broker标签
-                <span class="required" aria-required="true"> * </span>
-            </label>
-            <div class="col-md-7 input-icon right">
-                <input type="text" name="brokerTag" placeholder="" class="form-control" ng-model="formData.brokerTag" required>
+        <div ng-if="brokerStatusBlock">
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">broker标签
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <div class="col-md-7 input-icon right">
+                    <input type="text" name="brokerTag" placeholder="" class="form-control" ng-model="formData.brokerTag" required>
+                </div>
+            </div>
+        </div>
+        <div ng-if="brokeredit">
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">broker标签
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <div class="col-md-7 input-icon right">
+                    <input type="text" name="brokerTag" placeholder="" class="form-control" ng-model="formData.brokerTag" required disabled>
+                </div>
             </div>
         </div>
 

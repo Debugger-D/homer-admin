@@ -11,6 +11,14 @@ angular.module('MetronicApp').factory('topicAPI', ["$resource", function ($resou
             },
             url: messageAllURL+"/messagetopic/list/:platformCode"
         },
+        detail: {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Cache-Control" : "no-cache"
+            },
+            url: messageAllURL+"/messagetopic/:platformCode"
+        },
         add: {
             method: 'POST',
             headers: {"Content-Type": "application/json"},

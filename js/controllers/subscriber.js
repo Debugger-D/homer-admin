@@ -66,17 +66,13 @@ angular.module('MetronicApp').controller('subscriberController', ['$scope', '$ro
         $scope.gettopicList = function() {
             var filterObj = $.extend({},$scope.filterOptions);
 
-            topicAPI.get(filterObj, function(data) {
+            topicAPI.detail(filterObj, function(data) {
                 // $scope.datatopicInfo = [];
                 console.log(data.infos)
-                if(data.infos.length < 1) {
-                    $scope.datatopicInfo = [];
-                    $scope.platformAuthMsg = '暂无数据';
-                } else {
-                    $scope.datatopicInfo = data.infos[0];
+
+                    $scope.datatopicInfo = data;
                     console.log($scope.datatopicInfo)
                     $scope.platformAuthMsg = "";
-                }
                 count = 0;
             }, function(err) {
                 $scope.error_description&&($scope.error_description = err.data.error.description);
@@ -108,12 +104,17 @@ angular.module('MetronicApp').controller('subscriberController', ['$scope', '$ro
 
         // 编辑主题1
         $scope.edittopic1 = function(data) {
+            var newdata={};
+            newdata=data
+            newdata.timeout=data.timeout.toString()
+            newdata.maxTimes=data.maxTimes.toString()
+            console.log(typeof (newdata.timeout))
             $scope.topic1=true;
             $scope.topic2=false;
             $scope.error_description= "";
             ModalService.open($scope, topicPath, function(scope) {
                 scope.title = "编辑";
-                scope.formData = angular.copy(data);
+                scope.formData = angular.copy(newdata);
                 scope.httpDisable = true;
             }, function(newData) {
                 console.log(newData);
