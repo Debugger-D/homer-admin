@@ -51,7 +51,7 @@
                                     <td>{{list.virtualHost}}</td>
                                     <td>{{list.userName}}</td>
                                     <td>{{list.password}}</td>
-                                    <td>{{list.publisherConfirm}}</td>
+                                    <td>{{list.publisherConfirm | publisherConfirm}}</td>
                                     <td>
                                         <a href="javascript:;" ng-click="edit(list)" class="btn blue">
                                             <i class="fa fa-edit"></i>  修改

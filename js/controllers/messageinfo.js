@@ -108,9 +108,6 @@ angular.module('MetronicApp').controller('messageinfoController', ['$scope', '$r
             }, function(err) {
                 alert('消息重发失败')
                 $scope.error_description&&($scope.error_description = err.data.error.description);
-                if(err.status == 403) {
-                    $scope.platformAuthMsg = '报错';
-                }else{$scope.platformAuthMsg = '发送失败';}
             });
         };
     // ========根据用户输入实时查询平台==========

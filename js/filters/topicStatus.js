@@ -66,4 +66,11 @@ angular.module('MetronicApp').filter('filterStatus', [function () {
             "NOTIFY": "通知"
         }[input]
     }
+}]).filter('publisherConfirm', [function () {
+    return function (input) {
+        return {
+            "true": "是",
+            "false": "否"
+        }[input]
+    }
 }]);
