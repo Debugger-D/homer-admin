@@ -47,8 +47,14 @@ angular.module('MetronicApp').controller('messageinfoController', ['$scope', '$r
                     count = 0;
                     messageinfoAPI.getmessageresinfo(filterObj, function(data) {
                         // $scope.twoBlock=true;
-                        $scope.msi=data;
-                        count = 0;
+                        if(data.length < 1 ) {
+                            $scope.dataInfo = [];
+                            $scope.platformAuthMsg = '暂无数据';
+                        }else{
+                            $scope.msi=data;
+                            count = 0;
+                        }
+
                     }, function(err) {
                         // $scope.twoBlock=false;
                         $scope.msi='';
@@ -97,8 +103,10 @@ angular.module('MetronicApp').controller('messageinfoController', ['$scope', '$r
         $scope.resend=function (data) {
             //var filterObj = $.extend( {},{messageKey:data});
             messageinfoAPI.resend({'messagekey':data},null, function(data) {
+                alert('消息已重发')
                 $scope.getList();
             }, function(err) {
+                alert('消息重发失败')
                 $scope.error_description&&($scope.error_description = err.data.error.description);
                 if(err.status == 403) {
                     $scope.platformAuthMsg = '报错';

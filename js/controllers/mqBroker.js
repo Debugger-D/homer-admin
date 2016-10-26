@@ -55,6 +55,7 @@ angular.module('MetronicApp').controller('mqBrokerController', ['$scope', '$root
         }
 
         // =====新增=======
+        $scope.formData={}
         $scope.add = function() {
             $scope.error_description= "";
             $scope.brokerStatusBlock=true;

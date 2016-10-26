@@ -28,9 +28,9 @@ angular.module('MetronicApp').filter('filterStatus', [function () {
 }]).filter('messageStatus', [function () {
     return function (input) {
         return {
-            "ENQUEUE": "入队",
-            "ACCEPTED": "受理",
-            "WAITING": "等待",
+            "ENQUEUE": "收到",
+            "ACCEPTED": "已受理",
+            "WAITING": "待受理",
             "PROCESSING": "处理中",
             "FINISH_SUCCESS": "成功",
             "FINISH_FAILED": "失败",

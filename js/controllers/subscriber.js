@@ -120,6 +120,7 @@ angular.module('MetronicApp').controller('subscriberController', ['$scope', '$ro
                 console.log(newData);
                 topicAPI.edit(JSON.stringify(newData), function(data) {
                     $scope.getList();
+                    $scope.gettopicList();
                     ModalService.close();
                 }, function(err) {
                     $scope.error_description = err.data.error.description;
@@ -139,6 +140,7 @@ angular.module('MetronicApp').controller('subscriberController', ['$scope', '$ro
                 console.log(newData);
                 topicAPI.edit(JSON.stringify(newData), function(data) {
                     $scope.getList();
+                    $scope.gettopicList();
                     ModalService.close();
                 }, function(err) {
                     $scope.error_description = err.data.error.description;

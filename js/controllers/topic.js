@@ -85,7 +85,7 @@ angular.module('MetronicApp').controller('topicController', ['$scope', '$rootSco
             $scope.error_description= "";
             ModalService.open($scope, modalPath, function(scope) {
                 scope.title = "添加";
-                scope.formData = {};
+                scope.formData = {timeout:'5000',maxTimes:'3',intervalTime:'10'};
             }, function(newData) {
                 topicAPI.add({},JSON.stringify(newData), function(data) {
                     $scope.getList();
