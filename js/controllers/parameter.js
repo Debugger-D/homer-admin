@@ -57,6 +57,7 @@ angular.module('MetronicApp').controller('parameterController', ['$scope', '$roo
                 });
             });
         };
+        $scope.formData={};
         // =====编辑========
         $scope.edit = function(data) {
             $scope.error_description= "";
