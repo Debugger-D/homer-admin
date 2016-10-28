@@ -142,19 +142,42 @@
                     <input type="text" name="platformCode" placeholder="" class="form-control" ng-model="formData.cronExpression">
                 </div>
             </div>
-
             <div class="form-group col-md-12">
-                <label class="control-label col-md-3">  最大生产速度
+                <label class="control-label col-md-3">最大生产速度
+                    <span class="required" aria-required="true"> * </span>
                 </label>
                 <div class="col-md-7 input-icon right">
-                    <input type="text" name="intervalSeconds" placeholder="" class="form-control" ng-model="formData.maxProduceSpeed" >
+                    <!--<input type="text" name="codeLength" placeholder="" class="form-control" ng-model="formData.maxProduceSpeed"  required>-->
+                    <select name="" class="form-control" ng-model="formData.maxProduceSpeed" required>
+                        <!--<option value="">请选择</option>-->
+                        <option value="-1">不限速</option>
+                        <option value="0">不允许发送</option>
+                        <option value="10">10条/s</option>
+                        <option value="20">20条/s</option>
+                        <option value="50">50条/s</option>
+                        <option value="100">100条/s</option>
+                        <option value="200">200条/s</option>
+                        <option value="500">500条/s</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group col-md-12">
-                <label class="control-label col-md-3">  最大消费速度
+                <label class="control-label col-md-3">最大消费速度
+                    <span class="required" aria-required="true"> * </span>
                 </label>
                 <div class="col-md-7 input-icon right">
-                    <input type="text" name="intervalSeconds" placeholder="" class="form-control" ng-model="formData.maxConsumeSpeed" >
+                    <!--<input type="text" name="codeLength" placeholder="" class="form-control" ng-model="formData.maxConsumeSpeed" required>-->
+                    <select name="" class="form-control" ng-model="formData.maxConsumeSpeed" required>
+                        <!--<option value="">请选择</option>-->
+                        <option value="-1">不限速</option>
+                        <option value="0">不允许发送</option>
+                        <option value="10">10条/s</option>
+                        <option value="20">20条/s</option>
+                        <option value="50">50条/s</option>
+                        <option value="100">100条/s</option>
+                        <option value="200">200条/s</option>
+                        <option value="500">500条/s</option>
+                    </select>
                 </div>
             </div>
         </div>

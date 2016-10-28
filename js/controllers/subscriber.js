@@ -108,6 +108,8 @@ angular.module('MetronicApp').controller('subscriberController', ['$scope', '$ro
             newdata=data
             newdata.timeout=data.timeout.toString()
             newdata.maxTimes=data.maxTimes.toString()
+            newdata.maxProduceSpeed=data.maxProduceSpeed.toString()
+            newdata.maxConsumeSpeed=data.maxConsumeSpeed.toString()
             console.log(typeof (newdata.timeout))
             $scope.topic1=true;
             $scope.topic2=false;

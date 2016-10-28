@@ -73,4 +73,17 @@ angular.module('MetronicApp').filter('filterStatus', [function () {
             "false": "否"
         }[input]
     }
+}]).filter('dashabijpp', [function () {
+    return function (input) {
+        return {
+            "-1": "不限速",
+            "10": "10条/秒",
+            "20": "20条/秒",
+            "50": "50条/秒",
+            "100": "100条/秒",
+            "200": "200条/秒",
+            "500": "500条/秒",
+            "0": "不允许发送"
+        }[input]
+    }
 }]);
