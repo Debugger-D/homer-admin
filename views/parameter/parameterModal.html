@@ -11,7 +11,8 @@
                     <span class="required" aria-required="true"> * </span>
                 </label>
                 <div class="col-md-7 input-icon right">
-                    <input type="text" name="brokerTag" placeholder="" class="form-control" ng-model="formData.paramCode" required>
+                    <input type="text" name="paramCode" placeholder="" class="form-control" ng-model="formData.paramCode" ng-pattern="/^[^\u4e00-\u9fa5]{0,}$/" required>
+                    <span style="color: red;" ng-show="form.paramCode.$invalid && !form.paramCode.$error.required">非法的参数值</span>
                 </div>
             </div>
             <div class="form-group col-md-12">

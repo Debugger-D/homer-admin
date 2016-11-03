@@ -11,7 +11,8 @@
                     <span class="required" aria-required="true"> * </span>
                 </label>
                 <div class="col-md-7 input-icon right">
-                    <input type="text" name="dayTimesLimit" placeholder="" class="form-control" ng-model="formData.topicTag"  required>
+                    <input type="text" name="topicTag" placeholder="" class="form-control" ng-model="formData.topicTag" ng-pattern="/^[^\u4e00-\u9fa5]{0,}$/"  required>
+                    <span style="color: red;" ng-show="form.topicTag.$invalid && !form.topicTag.$error.required">非法的参数值</span>
                 </div>
             </div>
             <div class="form-group col-md-12">

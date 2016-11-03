@@ -33,6 +33,32 @@
                             </div>
                         </div>
                     </div>
+
+
+                    <div class="table-scrollable">
+                        <table class="table table-bordered table-hover table-striped table-condensed flip-content" id="sample_2" role="grid" aria-describedby="sample_1_info">
+                            <thead>
+                            <tr role="row">
+                                <th class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="日志信息"> 日志信息</th>
+                                <th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="日志类型"> 日志类型 </th>
+                                <th class="" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="日志时间">日志时间</th>
+                                <th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="日志内容"> 日志内容 </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="gradeX" role="row" ng-repeat="data in msi" ng-show="databeside">
+                                <td>{{data.logInfo}}</td>
+                                <td>{{data.logType | logType}}</td>
+                                <td>{{data.logTime |date:"yyyy/MM/dd HH:mm:ss:sss"}}</td>
+                                <td>
+                                    <a href="javascript:;" ng-click="detail(data.logContent)" class="btn blue">
+                                         内容
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <div ng-show="messageTrace" style="box-sizing: border-box;">
                         <h3 style="text-align: center">消息追踪图</h3><br>
                         <div style="text-align: center ;display: none">
@@ -102,7 +128,7 @@
                                     <div style="left: 90%" class="timeline-time">{{timepoint*10}}</div>
                                 </div>
                                 <!--<div style="width: 0% ;border:none;" class="chartGh">-->
-                                    <!--<div style="" class="chartStatus">{{endStatus}}</div>-->
+                                <!--<div style="" class="chartStatus">{{endStatus}}</div>-->
                                 <!--</div>-->
                             </div>
                             <div style="" class="chartBody">
@@ -156,31 +182,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="table-scrollable">
-                        <table class="table table-bordered table-hover table-striped table-condensed flip-content" id="sample_2" role="grid" aria-describedby="sample_1_info">
-                            <thead>
-                            <tr role="row">
-                                <th class="" tabindex="6" aria-controls="sample_7" rowspan="1" colspan="1" aria-label="日志信息"> 日志信息</th>
-                                <th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="日志类型"> 日志类型 </th>
-                                <th class="" tabindex="4" aria-controls="sample_5" rowspan="1" colspan="1" aria-label="日志时间">日志时间</th>
-                                <th class="" tabindex="11" aria-controls="sample_3" rowspan="1" colspan="1" aria-label="日志内容"> 日志内容 </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr class="gradeX" role="row" ng-repeat="data in msi" ng-show="databeside">
-                                <td>{{data.logInfo}}</td>
-                                <td>{{data.logType | logType}}</td>
-                                <td>{{data.logTime |date:"yyyy/MM/dd HH:mm:ss:sss"}}</td>
-                                <td>
-                                    <a href="javascript:;" ng-click="detail(data.logContent)" class="btn blue">
-                                         内容
-                                    </a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
                     </div>
                     <!-- ======================================== 弹窗 ==================================== -->
                     <!-- ==========日志主体========== -->
